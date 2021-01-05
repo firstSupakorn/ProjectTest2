@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/mainFragment5">
+    <fragment
+        android:id="@+id/mainFragment5"
+        android:name="com.example.projecttest2.MainFragment"
+        android:label="MainFragment" >
+        <action
+            android:id="@+id/action_mainFragment5_to_iphoneFragment"
+            app:destination="@id/iphoneFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/iphoneFragment"
+        android:name="com.example.projecttest2.IphoneFragment"
+        android:label="fragment_iphone"
+        tools:layout="@layout/fragment_iphone" />
+</navigation>
