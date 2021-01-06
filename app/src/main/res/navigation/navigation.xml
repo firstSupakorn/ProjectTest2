@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_mainFragment5_to_promotionFragment"
             app:destination="@id/promotionFragment" />
+        <action
+            android:id="@+id/action_mainFragment5_to_videoFragment"
+            app:destination="@id/videoFragment" />
     </fragment>
     <fragment
         android:id="@+id/iphoneFragment"
@@ -25,4 +28,9 @@
         android:name="com.example.projecttest2.PromotionFragment"
         android:label="fragment_promotion"
         tools:layout="@layout/fragment_promotion" />
+    <fragment
+        android:id="@+id/videoFragment"
+        android:name="com.example.projecttest2.VideoFragment"
+        android:label="fragment_video"
+        tools:layout="@layout/fragment_video" />
 </navigation>

@@ -19,7 +19,7 @@ class MainFragment : Fragment() {
         Navigation.findNavController(view).navigate(R.id.action_mainFragment5_to_iphoneFragment)
     }
     binding.promotionButton.setOnClickListener{view: View->
-        Navigation.findNavController(view).navigate(R.id.action_mainFragment5_to_promotionFragment)
+        Navigation.findNavController(view).navigate(R.id.action_mainFragment5_to_videoFragment)
     }
     return binding.root
 
