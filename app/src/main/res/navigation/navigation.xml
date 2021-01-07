@@ -22,7 +22,12 @@
         android:id="@+id/iphoneFragment"
         android:name="com.example.projecttest2.IphoneFragment"
         android:label="fragment_iphone"
-        tools:layout="@layout/fragment_iphone" />
+        tools:layout="@layout/fragment_iphone" >
+        <argument
+            android:name="strArg"
+            app:argType="string"
+            android:defaultValue='"Test"' />
+    </fragment>
     <fragment
         android:id="@+id/promotionFragment"
         android:name="com.example.projecttest2.PromotionFragment"
