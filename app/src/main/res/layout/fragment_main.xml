@@ -20,6 +20,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.android.navigation.TitleFragment">
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,6 +30,7 @@
             android:id="@+id/promotionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="180dp"
             android:layout_weight="1"
             android:background="@drawable/group_18"
             app:backgroundTint="@null"
@@ -36,22 +38,36 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.554" />
+            app:layout_constraintTop_toTopOf="@+id/videoButton"
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/iphoneButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="112dp"
             android:background="@drawable/group_20"
+            android:textStyle="bold"
+            app:backgroundTint="@null"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/videoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="180dp"
+            android:background="@drawable/group_19"
             android:textStyle="bold"
             app:backgroundTint="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.211" />
+            app:layout_constraintTop_toTopOf="@+id/iphoneButton"
+            app:layout_constraintVertical_bias="0.0" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
