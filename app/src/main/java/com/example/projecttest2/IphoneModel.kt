@@ -13,12 +13,10 @@ class IphoneViewModel : ViewModel(){
 
     }
     var score = MutableLiveData<Int>()
-    
-
-    fun updateScore(){
-        score.value = score.value + 1
-    }
 
 
+//    fun updateScore(){
+//        score.value = score.value + 1
+//    }
 
 }
