@@ -14,14 +14,14 @@ class MainFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
 
-    val binding = DataBindingUtil.inflate<FragmentMainBinding>(inflater, R.layout.fragment_main, container, false)
-    binding.iphoneButton.setOnClickListener{view: View->
-        Navigation.findNavController(view).navigate(R.id.action_mainFragment5_to_iphoneFragment)
-    }
-    binding.promotionButton.setOnClickListener{view: View->
-        Navigation.findNavController(view).navigate(R.id.action_mainFragment5_to_videoFragment)
-    }
-    return binding.root
+        val binding = DataBindingUtil.inflate<FragmentMainBinding>(inflater, R.layout.fragment_main, container, false)
+        binding.iphoneButton.setOnClickListener { view: View ->
+            Navigation.findNavController(view).navigate(R.id.action_mainFragment5_to_sleepTrackerFragment)
+        }
+        binding.promotionButton.setOnClickListener { view: View ->
+            Navigation.findNavController(view).navigate(R.id.action_mainFragment5_to_videoFragment)
+        }
+        return binding.root
 
     }
 

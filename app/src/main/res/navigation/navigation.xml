@@ -9,24 +9,14 @@
         android:name="com.example.projecttest2.MainFragment"
         android:label="MainFragment" >
         <action
-            android:id="@+id/action_mainFragment5_to_iphoneFragment"
-            app:destination="@id/iphoneFragment" />
-        <action
             android:id="@+id/action_mainFragment5_to_promotionFragment"
             app:destination="@id/promotionFragment" />
         <action
             android:id="@+id/action_mainFragment5_to_videoFragment"
             app:destination="@id/videoFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/iphoneFragment"
-        android:name="com.example.projecttest2.IphoneFragment"
-        android:label="fragment_iphone"
-        tools:layout="@layout/fragment_iphone" >
-        <argument
-            android:name="strArg"
-            app:argType="string"
-            android:defaultValue='"Test"' />
+        <action
+            android:id="@+id/action_mainFragment5_to_sleepTrackerFragment"
+            app:destination="@id/sleepTrackerFragment" />
     </fragment>
     <fragment
         android:id="@+id/promotionFragment"
@@ -38,4 +28,8 @@
         android:name="com.example.projecttest2.VideoFragment"
         android:label="fragment_video"
         tools:layout="@layout/fragment_video" />
+    <fragment
+        android:id="@+id/sleepTrackerFragment"
+        android:name="com.example.projecttest2.sleeptracker.SleepTrackerFragment"
+        android:label="SleepTrackerFragment" />
 </navigation>
