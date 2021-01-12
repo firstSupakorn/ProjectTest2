@@ -15,8 +15,8 @@
             android:id="@+id/action_mainFragment5_to_videoFragment"
             app:destination="@id/videoFragment" />
         <action
-            android:id="@+id/action_mainFragment5_to_sleepTrackerFragment"
-            app:destination="@id/sleepTrackerFragment" />
+            android:id="@+id/action_mainFragment5_to_iphoneFragment"
+            app:destination="@id/iphoneFragment" />
     </fragment>
     <fragment
         android:id="@+id/promotionFragment"
@@ -29,7 +29,7 @@
         android:label="fragment_video"
         tools:layout="@layout/fragment_video" />
     <fragment
-        android:id="@+id/sleepTrackerFragment"
-        android:name="com.example.projecttest2.sleeptracker.SleepTrackerFragment"
-        android:label="SleepTrackerFragment" />
+        android:id="@+id/iphoneFragment"
+        android:name="com.example.projecttest2.IphoneFragment"
+        android:label="IphoneFragment" />
 </navigation>

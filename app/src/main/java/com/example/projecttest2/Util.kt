@@ -22,8 +22,6 @@ import android.os.Build
 import android.text.Html
 import android.text.Spanned
 import androidx.core.text.HtmlCompat
-import com.example.projecttest2.R
-import com.example.projecttest2.database.SleepNight
 import java.text.SimpleDateFormat
 
 /**
@@ -64,7 +62,7 @@ fun convertLongToDateString(systemTime: Long): String {
  *           See: https://developer.android.com/reference/android/text/Spanned
  */
 
-fun formatNights(nights: List<SleepNight>, resources: Resources): Spanned {
+/*fun formatNights(nights: List<SleepNight>, resources: Resources): Spanned {
     val sb = StringBuilder()
     sb.apply {
         nights.forEach {
@@ -86,4 +84,4 @@ fun formatNights(nights: List<SleepNight>, resources: Resources): Spanned {
     } else {
         return HtmlCompat.fromHtml(sb.toString(), HtmlCompat.FROM_HTML_MODE_LEGACY)
     }
-}
+}*/
