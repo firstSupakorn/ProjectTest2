@@ -19,6 +19,5 @@ interface DaoMap {
     @Update
     fun updateMap(map: MapData)
 
-
-
 }
+

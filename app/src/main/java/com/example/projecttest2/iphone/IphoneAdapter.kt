@@ -1,4 +1,4 @@
-package com.example.projecttest2
+package com.example.projecttest2.iphone
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

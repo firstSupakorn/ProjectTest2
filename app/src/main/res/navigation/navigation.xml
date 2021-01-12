@@ -20,7 +20,7 @@
     </fragment>
     <fragment
         android:id="@+id/promotionFragment"
-        android:name="com.example.projecttest2.PromotionFragment"
+        android:name="com.example.projecttest2.promotion.PromotionFragment"
         android:label="fragment_promotion"
         tools:layout="@layout/fragment_promotion" />
     <fragment
@@ -30,6 +30,6 @@
         tools:layout="@layout/fragment_video" />
     <fragment
         android:id="@+id/iphoneFragment"
-        android:name="com.example.projecttest2.IphoneFragment"
+        android:name="com.example.projecttest2.iphone.IphoneFragment"
         android:label="IphoneFragment" />
 </navigation>

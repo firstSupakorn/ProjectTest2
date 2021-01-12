@@ -16,3 +16,6 @@ data class MapData (
         @ColumnInfo(name = "name")
         var name: String?
 )
+
+
+

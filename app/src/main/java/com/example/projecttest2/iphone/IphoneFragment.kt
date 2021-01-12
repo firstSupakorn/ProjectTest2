@@ -1,4 +1,4 @@
-package com.example.projecttest2
+package com.example.projecttest2.iphone
 
 import android.os.Bundle
 import android.util.Log
@@ -7,13 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Transformations
 
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.projecttest2.R
 import com.example.projecttest2.database.MapData
 import com.example.projecttest2.database.MapDataBase
 import com.example.projecttest2.databinding.FragmentIphoneBinding
+import com.example.projecttest2.network.getToken
 import kotlinx.android.synthetic.main.fragment_iphone.*
 
 class IphoneFragment : Fragment() {
@@ -40,7 +40,12 @@ class IphoneFragment : Fragment() {
         val iphoneList = dataSource.getAllMap()
 
         binding.iphoneViewModel = iphoneViewModel
-        iphoneViewModel.getPromotion()
+
+
+        val jsonMobileSub = iphoneViewModel.getMobileSub()
+//        Log.i("api",binding.jsonMobileSub.toString())
+
+
 
         for (item in iphoneList) {
             Log.i("getDatabase", item.name!!)

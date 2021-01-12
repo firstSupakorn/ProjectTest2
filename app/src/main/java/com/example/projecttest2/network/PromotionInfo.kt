@@ -11,3 +11,4 @@ data class PromotionInfo(
         val image07: String
 
         )
+

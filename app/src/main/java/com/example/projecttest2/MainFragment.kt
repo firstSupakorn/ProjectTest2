@@ -19,14 +19,18 @@ class MainFragment : Fragment() {
 
         val binding = DataBindingUtil.inflate<FragmentMainBinding>(inflater, R.layout.fragment_main, container, false)
         val application = requireNotNull(this.activity).application
+
         binding.iphoneButton.setOnClickListener { view: View ->
             MapDataBase.getDataBase(application).daoMap().insertMap(MapData(10,"IPHONe11"))
             Log.i("getDatabase", MapDataBase.getDataBase(application).daoMap().getMap(10).name!!)
             Navigation.findNavController(view).navigate(R.id.action_mainFragment5_to_iphoneFragment)
-
-//            MapDataBase.getDataBase(application).daoMap().insertMap(MapData(1,"fucking Room DB ..."))
         }
         binding.promotionButton.setOnClickListener { view: View ->
+            Log.i("promotion","promotion")
+            Navigation.findNavController(view).navigate(R.id.action_mainFragment5_to_promotionFragment)
+        }
+
+        binding.videoButton.setOnClickListener { view: View ->
             Navigation.findNavController(view).navigate(R.id.action_mainFragment5_to_videoFragment)
         }
         return binding.root

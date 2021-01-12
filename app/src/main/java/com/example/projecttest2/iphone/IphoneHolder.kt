@@ -1,9 +1,10 @@
-package com.example.projecttest2
+package com.example.projecttest2.iphone
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.projecttest2.R
 import com.example.projecttest2.database.MapData
 
 class IphoneHolder(inflater: LayoutInflater, parent: ViewGroup) :

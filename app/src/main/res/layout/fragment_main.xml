@@ -27,7 +27,7 @@
         android:background="#583D72">
 
         <Button
-            android:id="@+id/promotionButton"
+            android:id="@+id/videoButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="180dp"
@@ -38,7 +38,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/videoButton"
+            app:layout_constraintTop_toTopOf="@+id/promotionButton"
             app:layout_constraintVertical_bias="0.0" />
 
         <Button
@@ -55,7 +55,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/videoButton"
+            android:id="@+id/promotionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="180dp"

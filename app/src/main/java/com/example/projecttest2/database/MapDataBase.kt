@@ -2,9 +2,13 @@ package com.example.projecttest2.database
 
 
 import android.content.Context
+import android.os.Build
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+
+//@Database(entities = { MapData.class, PromotionData.class },version = 1,exportSchema = false)
+
 
 @Database(entities = [(MapData::class)],version = 1,exportSchema = false)
 abstract class MapDataBase : RoomDatabase() {
@@ -21,4 +25,7 @@ abstract class MapDataBase : RoomDatabase() {
 
     abstract fun daoMap(): DaoMap
 }
+
+
+
 
