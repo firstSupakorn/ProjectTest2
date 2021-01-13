@@ -8,11 +8,16 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
+package com.example.projecttest2.network
 
 
-data class SubBtn04 (
+data class MobileSub06 (
 
-	val model : String,
-	val display : String,
-	val imageNormal : String
+	val brand : String,
+	val subBtn01 : SubBtn01,
+	val subBtn02 : SubBtn02,
+	val subBtn03 : SubBtn03,
+	val subBtn04 : SubBtn04,
+	val subBtn05 : SubBtn05,
+	val subBtn06 : SubBtn06
 )

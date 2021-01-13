@@ -3,8 +3,7 @@ package com.example.projecttest2.network
 
 
 // import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import MobileSubInfo
-import PromotionInfo
+import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import com.google.gson.Gson
@@ -14,15 +13,13 @@ import com.google.gson.annotations.SerializedName
 import com.squareup.moshi.Json
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import okhttp3.Interceptor
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.Response
+import okhttp3.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.*
+import retrofit2.http.Headers
 import java.security.cert.X509Certificate
 import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManager
@@ -32,6 +29,21 @@ import javax.net.ssl.X509TrustManager
 // import kotlinx.coroutines.Deferred
 
 private const val BASE_URL = "https://fibo.jaymart.org/"
+
+class AuthInterceptor(context: Context) : Interceptor {
+    private val sessionManager = SessionManager(context)
+
+    override fun intercept(chain: Interceptor.Chain): Response {
+        val requestBuilder = chain.request().newBuilder()
+
+        // If token has been saved, add it to the request
+        sessionManager.fetchAuthToken()?.let {
+            requestBuilder.addHeader("Authorization", "Bearer $it")
+        }
+
+        return chain.proceed(requestBuilder.build())
+    }
+}
 
 
 class TokenInterceptor : Interceptor {
@@ -65,10 +77,12 @@ private fun getUnsafeOkHttpClient(): OkHttpClient {
     var interceptor = TokenInterceptor()
 
     return OkHttpClient.Builder()
+//            .addInterceptor(AuthInterceptor(context))
             .sslSocketFactory(sslSocketFactory, trustAllCerts[0] as X509TrustManager)
             .build()
 }
 private val client = getUnsafeOkHttpClient()
+
 
 var gson = GsonBuilder()
         .setLenient()
@@ -94,10 +108,10 @@ data class UserInfo (
  */
 interface PromotionsApiService {
     @GET("api/promotion")
-    fun getPromotion(@Header("Authorization") authHeader: String): Call<JsonObject>
+    fun getPromotion(@Header("Authorization") authHeader: String): Call<PromotionInfo>
 
     @GET("api/mobileSub")
-    fun getMobileSub(@Header("Authorization") authHeader: String): Call<JsonObject>
+    fun getMobileSub(@Header("Authorization") authHeader: String): Call<MobileSubInfo>
 
     @Headers("Content-Type: application/json")
     @POST("api/user/login")
@@ -135,16 +149,15 @@ object ApiService{
 
     fun getMobileSub(){
         PromotionsApi.retrofitService.getMobileSub("Bearer ${token}" ).enqueue(
-                object : Callback<JsonObject> {
-                    override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                object : Callback<MobileSubInfo> {
+                    override fun onFailure(call: Call<MobileSubInfo>, t: Throwable) {
                         Log.i("api", "Fail")
                     }
 
-                    override fun onResponse(call: Call<JsonObject>, response: retrofit2.Response<JsonObject>) {
+                    override fun onResponse(call: Call<MobileSubInfo>, response: retrofit2.Response<MobileSubInfo>) {
                         if (response.isSuccessful) {
                             val json = response.body()
-                            val iphoneGson = Gson().fromJson(json, MobileSubInfo::class.java)
-                            Log.i("api", "mobile sub: ${iphoneGson.toString()}")
+                            Log.i("api", "mobile sub: ${json.toString()}")
                         }
                         else{
                                 Log.i("api", "Please Login")
@@ -158,16 +171,15 @@ object ApiService{
 
     fun getPromotion() {
         PromotionsApi.retrofitService.getPromotion("Bearer ${token}").enqueue(
-                object : Callback<JsonObject> {
-                    override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                object : Callback<PromotionInfo> {
+                    override fun onFailure(call: Call<PromotionInfo>, t: Throwable) {
                         Log.i("api", "Fail")
                     }
 
-                    override fun onResponse(call: Call<JsonObject>, response: retrofit2.Response<JsonObject>) {
+                    override fun onResponse(call: Call<PromotionInfo>, response: retrofit2.Response<PromotionInfo>) {
                         if (response.isSuccessful) {
                             val json = response.body()
-                            val promotionGson = Gson().fromJson(json, PromotionInfo::class.java)
-                            Log.i("api", promotionGson.toString())
+                            Log.i("api", json.toString())
                         } else {
                             Log.i("api", "Please Login")
                         }

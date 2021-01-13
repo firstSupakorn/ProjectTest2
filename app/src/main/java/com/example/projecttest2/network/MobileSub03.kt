@@ -9,13 +9,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
+package com.example.projecttest2.network
 
-data class MobileSubInfo (
+data class MobileSub03 (
 
-	val mobileSub01 : MobileSub01,
-	val mobileSub02 : MobileSub02,
-	val mobileSub03 : MobileSub03,
-	val mobileSub04 : MobileSub04,
-	val mobileSub05 : MobileSub05,
-	val mobileSub06 : MobileSub06
+	val brand : String,
+	val subBtn01 : SubBtn01,
+	val subBtn02 : SubBtn02,
+	val subBtn03 : SubBtn03,
+	val subBtn04 : SubBtn04,
+	val subBtn05 : SubBtn05,
+	val subBtn06 : SubBtn06
 )

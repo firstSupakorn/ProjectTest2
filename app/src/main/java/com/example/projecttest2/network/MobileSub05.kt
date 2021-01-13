@@ -9,8 +9,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 For support, please feel free to contact me at https://www.linkedin.com/in/syedabsar */
 
+package com.example.projecttest2.network
 
-data class MobileSub02 (
+data class MobileSub05 (
 
 	val brand : String,
 	val subBtn01 : SubBtn01,
