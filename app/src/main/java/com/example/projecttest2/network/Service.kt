@@ -4,8 +4,9 @@ package com.example.projecttest2.network
 
 // import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 
-import Json4Kotlin_Base
-import MobileSub05
+import IphoneInfo
+
+import PromotionInfo
 import android.util.Log
 import android.widget.Toast
 import com.google.gson.Gson
@@ -144,7 +145,7 @@ object ApiService{
                     override fun onResponse(call: Call<JsonObject>, response: retrofit2.Response<JsonObject>) {
                         if (response.isSuccessful) {
                             val json = response.body()
-                            val iphoneGson = Gson().fromJson(json, MobileSub05::class.java)
+                            val iphoneGson = Gson().fromJson(json, IphoneInfo::class.java)
                             Log.i("api", "mobile sub: ${iphoneGson.toString()}")
                         }
                         else{
@@ -157,17 +158,21 @@ object ApiService{
     }
 
 
-    fun getPromotion(){
-        PromotionsApi.retrofitService.getPromotion("Bearer ${token}" ).enqueue(
+    fun getPromotion() {
+        PromotionsApi.retrofitService.getPromotion("Bearer ${token}").enqueue(
                 object : Callback<JsonObject> {
                     override fun onFailure(call: Call<JsonObject>, t: Throwable) {
                         Log.i("api", "Fail")
                     }
 
                     override fun onResponse(call: Call<JsonObject>, response: retrofit2.Response<JsonObject>) {
-                        val json = response.body()
-                        val promotionGson = Gson().fromJson(json, Json4Kotlin_Base::class.java)
-                        Log.i("api",promotionGson.toString())
+                        if (response.isSuccessful) {
+                            val json = response.body()
+                            val promotionGson = Gson().fromJson(json, PromotionInfo::class.java)
+                            Log.i("api", promotionGson.toString())
+                        } else {
+                            Log.i("api", "Please Login")
+                        }
                     }
                 }
         )
