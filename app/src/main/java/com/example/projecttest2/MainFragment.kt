@@ -32,13 +32,13 @@ class MainFragment : Fragment() {
 
         binding.iphoneButton.setOnClickListener { view: View ->
             ApiService.getToken2(requireContext())
-//            ApiService.getMobileSub()
+            ApiService.getMobileSub(requireContext())
 //            MapDataBase.getDataBase(application).daoMap().insertMap(MapData(10,"IPHONe11"))
 //            Log.i("getDatabase", MapDataBase.getDataBase(application).daoMap().getMap(10).name!!)
 //            Navigation.findNavController(view).navigate(R.id.action_mainFragment5_to_iphoneFragment)
         }
         binding.promotionButton.setOnClickListener { view: View ->
-//            ApiService.getPromotion()
+            ApiService.getPromotion(requireContext())
 //            Navigation.findNavController(view).navigate(R.id.action_mainFragment5_to_promotionFragment)
         }
         binding.videoButton.setOnClickListener { view: View ->

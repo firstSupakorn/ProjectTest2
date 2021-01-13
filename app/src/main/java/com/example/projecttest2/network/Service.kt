@@ -7,6 +7,7 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import com.example.projecttest2.database.MapDataBase
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
@@ -170,7 +171,8 @@ object ApiService{
     }
 
     fun getMobileSub(context: Context){
-
+        sessionManager = SessionManager(context)
+        val token = sessionManager.fetchAuthToken()
         PromotionsApi.retrofitService.getMobileSub("Bearer ${token}" ).enqueue(
                 object : Callback<MobileSubInfo> {
                     override fun onFailure(call: Call<MobileSubInfo>, t: Throwable) {
@@ -192,24 +194,26 @@ object ApiService{
     }
 
 
-//    fun getPromotion() {
-//        PromotionsApi.retrofitService.getPromotion("Bearer ${token}").enqueue(
-//                object : Callback<PromotionInfo> {
-//                    override fun onFailure(call: Call<PromotionInfo>, t: Throwable) {
-//                        Log.i("api", "Fail")
-//                    }
-//
-//                    override fun onResponse(call: Call<PromotionInfo>, response: retrofit2.Response<PromotionInfo>) {
-//                        if (response.isSuccessful) {
-//                            val json = response.body()
-//                            Log.i("api", json.toString())
-//                        } else {
-//                            Log.i("api", "Please Login")
-//                        }
-//                    }
-//                }
-//        )
-//    }
+    fun getPromotion(context: Context) {
+        sessionManager = SessionManager(context)
+        val token = sessionManager.fetchAuthToken()
+        PromotionsApi.retrofitService.getPromotion("Bearer ${token}").enqueue(
+                object : Callback<PromotionInfo> {
+                    override fun onFailure(call: Call<PromotionInfo>, t: Throwable) {
+                        Log.i("api", "Fail")
+                    }
+
+                    override fun onResponse(call: Call<PromotionInfo>, response: retrofit2.Response<PromotionInfo>) {
+                        if (response.isSuccessful) {
+                            val json = response.body()
+                            Log.i("api", json.toString())
+                        } else {
+                            Log.i("api", "Please Login")
+                        }
+                    }
+                }
+        )
+    }
 
 }
 
