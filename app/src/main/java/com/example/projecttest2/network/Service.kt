@@ -3,9 +3,7 @@ package com.example.projecttest2.network
 
 
 // import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-
-import IphoneInfo
-
+import MobileSubInfo
 import PromotionInfo
 import android.util.Log
 import android.widget.Toast
@@ -145,7 +143,7 @@ object ApiService{
                     override fun onResponse(call: Call<JsonObject>, response: retrofit2.Response<JsonObject>) {
                         if (response.isSuccessful) {
                             val json = response.body()
-                            val iphoneGson = Gson().fromJson(json, IphoneInfo::class.java)
+                            val iphoneGson = Gson().fromJson(json, MobileSubInfo::class.java)
                             Log.i("api", "mobile sub: ${iphoneGson.toString()}")
                         }
                         else{
