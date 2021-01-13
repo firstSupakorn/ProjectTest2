@@ -4,8 +4,10 @@ package com.example.projecttest2.network
 
 // import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 
+import Json4Kotlin_Base
 import android.util.Log
 import android.widget.Toast
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import com.google.gson.annotations.SerializedName
@@ -162,7 +164,9 @@ object ApiService{
 
                     override fun onResponse(call: Call<JsonObject>, response: retrofit2.Response<JsonObject>) {
                         val promotionImageUrl = response.body()
-                        Log.i("api",promotionImageUrl.toString())
+                        val json = response.body()
+                        val promotionGson = Gson().fromJson(json, Json4Kotlin_Base::class.java)
+                        Log.i("api",promotionGson.toString())
                     }
                 }
         )

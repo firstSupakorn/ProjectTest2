@@ -23,12 +23,10 @@ class PromotionFragment : Fragment() {
         val application = requireNotNull(this.activity).application
 
         val dataSource = MapDataBase.getDataBase(application).daoMap()
-//
-        val promotionViewModel = PromotionViewModel(dataSource, application)
-//
-        binding.promotionViewModel = promotionViewModel
 
-//        promotionViewModel.getPromotion()
+        val promotionViewModel = PromotionViewModel(dataSource, application)
+
+        binding.promotionViewModel = promotionViewModel
 
         return binding.root
     }
