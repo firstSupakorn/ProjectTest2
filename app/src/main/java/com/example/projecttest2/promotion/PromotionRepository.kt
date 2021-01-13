@@ -2,7 +2,7 @@ package com.example.projecttest2.promotion
 
 import android.util.Log
 import com.example.projecttest2.database.DaoMap
-import com.example.projecttest2.network.PromotionsApi
+//import com.example.projecttest2.network.PromotionsApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.await

@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.room.ColumnInfo
 import androidx.room.PrimaryKey
 import com.example.projecttest2.database.DaoMap
-import com.example.projecttest2.network.PromotionsApi
+//import com.example.projecttest2.network.PromotionsApi
 import com.squareup.moshi.JsonClass
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
