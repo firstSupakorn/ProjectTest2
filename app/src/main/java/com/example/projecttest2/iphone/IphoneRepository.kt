@@ -28,13 +28,13 @@ class IphoneRepository(private val database: DaoMap) {
     suspend fun refreshIphonePage() {
         Log.i("api", "refresh iphone page")
         withContext(Dispatchers.IO) {
-            val jsonObject = PromotionsApi.retrofitService.getMobileSub().await()
-            val jsonIphone = jsonObject.getAsJsonObject("mobileSub05")
-            jsonIphone.getAsJsonObject().remove("brand");
-
-
-            Log.i("api", "iphone json: ${jsonIphone.get("model")}")
-            Log.i("api", "iphone json: ${jsonIphone.size()}")
+//            val jsonObject = PromotionsApi.retrofitService.getMobileSub().await()
+//            val jsonIphone = jsonObject.getAsJsonObject("mobileSub05")
+//            jsonIphone.getAsJsonObject().remove("brand");
+//
+//
+//            Log.i("api", "iphone json: ${jsonIphone.get("model")}")
+//            Log.i("api", "iphone json: ${jsonIphone.size()}")
 
 
 //            database.videoDao.insertAll(*playlist.asDatabaseModel())

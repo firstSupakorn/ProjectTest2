@@ -25,19 +25,19 @@ class PromotionViewModel(
         }
     }
 
-    fun getPromotion(){
-    PromotionsApi.retrofitService.getPromotion().enqueue(
-        object : Callback<JsonObject> {
-            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
-                Log.i("api", "Fail")
-            }
-
-            override fun onResponse(call: Call<JsonObject>, response: retrofit2.Response<JsonObject>) {
-                val promotionImageUrl = response.body()
-                Log.i("api",promotionImageUrl.toString())
-            }
-        }
-        )
-    }
+//    fun getPromotion(){
+//    PromotionsApi.retrofitService.getPromotion().enqueue(
+//        object : Callback<JsonObject> {
+//            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+//                Log.i("api", "Fail")
+//            }
+//
+//            override fun onResponse(call: Call<JsonObject>, response: retrofit2.Response<JsonObject>) {
+//                val promotionImageUrl = response.body()
+//                Log.i("api",promotionImageUrl.toString())
+//            }
+//        }
+//        )
+//    }
 
 }

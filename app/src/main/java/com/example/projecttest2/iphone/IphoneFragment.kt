@@ -13,7 +13,6 @@ import com.example.projecttest2.R
 import com.example.projecttest2.database.MapData
 import com.example.projecttest2.database.MapDataBase
 import com.example.projecttest2.databinding.FragmentIphoneBinding
-import com.example.projecttest2.network.getToken
 import kotlinx.android.synthetic.main.fragment_iphone.*
 
 class IphoneFragment : Fragment() {
@@ -30,6 +29,7 @@ class IphoneFragment : Fragment() {
         // Get a reference to the binding object and inflate the fragment views.
         val binding: FragmentIphoneBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_iphone, container, false)
+        Log.i("test","iphone")
 
         val application = requireNotNull(this.activity).application
 
@@ -42,7 +42,7 @@ class IphoneFragment : Fragment() {
         binding.iphoneViewModel = iphoneViewModel
 
 
-        val jsonMobileSub = iphoneViewModel.getMobileSub()
+//        val jsonMobileSub = iphoneViewModel.getMobileSub()
 //        Log.i("api",binding.jsonMobileSub.toString())
 
 

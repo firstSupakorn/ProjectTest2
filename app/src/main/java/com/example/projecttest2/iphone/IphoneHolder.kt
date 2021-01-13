@@ -8,7 +8,7 @@ import com.example.projecttest2.R
 import com.example.projecttest2.database.MapData
 
 class IphoneHolder(inflater: LayoutInflater, parent: ViewGroup) :
-        RecyclerView.ViewHolder(inflater.inflate(R.layout.iphone_item, parent, false)) {
+    RecyclerView.ViewHolder(inflater.inflate(R.layout.iphone_item, parent, false)) {
     private var mTitleView: TextView? = null
     private var mYearView: TextView? = null
 

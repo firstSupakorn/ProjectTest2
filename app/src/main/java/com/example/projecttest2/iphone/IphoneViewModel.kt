@@ -25,20 +25,20 @@ class IphoneViewModel(val database: DaoMap,
         }
     }
 
-    fun getMobileSub(){
-        PromotionsApi.retrofitService.getMobileSub().enqueue(
-            object : Callback<JsonObject> {
-                override fun onFailure(call: Call<JsonObject>, t: Throwable) {
-                    Log.i("api", "Fail")
-                }
-
-                override fun onResponse(call: Call<JsonObject>, response: retrofit2.Response<JsonObject>) {
-                    val jsonMobileSub = response.body()
-//                    Log.i("api",promotionImageUrl.toString())
-                }
-            }
-            )
-        }
+//    fun getMobileSub(){
+//        PromotionsApi.retrofitService.getMobileSub().enqueue(
+//            object : Callback<JsonObject> {
+//                override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+//                    Log.i("api", "Fail")
+//                }
+//
+//                override fun onResponse(call: Call<JsonObject>, response: retrofit2.Response<JsonObject>) {
+//                    val jsonMobileSub = response.body()
+////                    Log.i("api",promotionImageUrl.toString())
+//                }
+//            }
+//            )
+//        }
 
 //    fun getToken(){
 //        val userInfo = UserInfo("admin@jaymart","Jaymart@2020")

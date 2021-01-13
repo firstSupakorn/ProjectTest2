@@ -9,12 +9,14 @@ import retrofit2.await
 
 class PromotionRepository(private val database: DaoMap) {
 
-
     suspend fun refreshPromotionPage() {
         Log.i("api", "refresh promotion page")
         withContext(Dispatchers.IO) {
-            val promotionJson = PromotionsApi.retrofitService.getPromotion().await()
-            Log.i("api", "iphone json: ${promotionJson.toString()}")
+//            val promotionJson = PromotionsApi.retrofitService.getPromotion().await()
+
+//            Log.i("api", "iphone json: ${promotionJson.toString()}")
+
+
 
         }
     }

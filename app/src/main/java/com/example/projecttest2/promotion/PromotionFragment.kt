@@ -28,7 +28,7 @@ class PromotionFragment : Fragment() {
 //
         binding.promotionViewModel = promotionViewModel
 
-        promotionViewModel.getPromotion()
+//        promotionViewModel.getPromotion()
 
         return binding.root
     }

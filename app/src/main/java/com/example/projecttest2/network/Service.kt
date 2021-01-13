@@ -5,6 +5,7 @@ package com.example.projecttest2.network
 // import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 
 import android.util.Log
+import android.widget.Toast
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import com.google.gson.annotations.SerializedName
@@ -62,7 +63,6 @@ private fun getUnsafeOkHttpClient(): OkHttpClient {
     var interceptor = TokenInterceptor()
 
     return OkHttpClient.Builder()
-            .addInterceptor(interceptor)
             .sslSocketFactory(sslSocketFactory, trustAllCerts[0] as X509TrustManager)
             .build()
 }
@@ -90,18 +90,16 @@ data class UserInfo (
 /**
  * A public interface that exposes the [getProperties] method
  */
-//    fun getPromotion(@Header("Authorization") authHeader: String?): Call<JsonObject>
 interface PromotionsApiService {
     @GET("api/promotion")
-    fun getPromotion(): Call<JsonObject>
+    fun getPromotion(@Header("Authorization") authHeader: String): Call<JsonObject>
 
     @GET("api/mobileSub")
-    fun getMobileSub(): Call<JsonObject>
-
+    fun getMobileSub(@Header("Authorization") authHeader: String): Call<JsonObject>
 
     @Headers("Content-Type: application/json")
     @POST("api/user/login")
-    fun getToken(@Body userData:UserInfo): Call<JsonObject>
+    fun getToken(@Body userData:UserInfo): Call<TokenInfo>
 
 }
 
@@ -113,20 +111,67 @@ object PromotionsApi {
 
 }
 
-fun getToken(){
-    val userInfo = UserInfo("admin@jaymart","Jaymart@2020")
-    PromotionsApi.retrofitService.getToken(userInfo).enqueue(
-            object : Callback<JsonObject> {
-                override fun onFailure(call: Call<JsonObject>, t: Throwable) {
-                    Log.i("api", t.message.toString())
-                }
+object ApiService{
+    private var token = ""
 
-                override fun onResponse(call: Call<JsonObject>, response: retrofit2.Response<JsonObject>) {
-                    val tokenVar = response.body()
-                    Log.i("api",tokenVar?.get("token").toString())
+    fun getToken(){
+        val userInfo = UserInfo("admin@jaymart","Jaymart@2020")
+        PromotionsApi.retrofitService.getToken(userInfo).enqueue(
+                object : Callback<TokenInfo> {
+                    override fun onFailure(call: Call<TokenInfo>, t: Throwable) {
+                        Log.i("api", t.message.toString())
+                    }
+
+                    override fun onResponse(call: Call<TokenInfo>, response: retrofit2.Response<TokenInfo>) {
+                        val tokenVar = response.body()
+                        token = tokenVar?.token.toString()
+                        Log.i("api",tokenVar?.token.toString())
+                    }
                 }
-            }
+        )
+    }
+
+    fun getMobileSub(){
+        PromotionsApi.retrofitService.getMobileSub("Bearer ${token}" ).enqueue(
+                object : Callback<JsonObject> {
+                    override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                        Log.i("api", "Fail")
+                    }
+
+                    override fun onResponse(call: Call<JsonObject>, response: retrofit2.Response<JsonObject>) {
+                        if (response.isSuccessful) {
+                            val jsonMobileSub = response.body()
+                            Log.i("api", "mobile sub: ${jsonMobileSub}")
+                        }
+                        else{
+                                Log.i("api", "Please Login")
+                            }
+
+                    }
+                }
     )
+    }
+
+
+    fun getPromotion(){
+        PromotionsApi.retrofitService.getPromotion("Bearer ${token}" ).enqueue(
+                object : Callback<JsonObject> {
+                    override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+                        Log.i("api", "Fail")
+                    }
+
+                    override fun onResponse(call: Call<JsonObject>, response: retrofit2.Response<JsonObject>) {
+                        val promotionImageUrl = response.body()
+                        Log.i("api",promotionImageUrl.toString())
+                    }
+                }
+        )
+    }
+
 }
+
+
+
+
 
 
