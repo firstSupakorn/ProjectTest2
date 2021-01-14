@@ -10,7 +10,6 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "maps")
 data class MapData (
         @PrimaryKey(autoGenerate = true)
-
         @ColumnInfo(name = "id")
         var id : Int,
         @ColumnInfo(name = "name")

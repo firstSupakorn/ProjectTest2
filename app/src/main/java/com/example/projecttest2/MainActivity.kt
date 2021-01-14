@@ -5,6 +5,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.projecttest2.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_promotion.*
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
@@ -13,8 +15,22 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+//        setContentView(R.layout.activity_main)
+//
+//        var sampleImages = intArrayOf(
+//                R.drawable.bg,
+//                R.drawable.bg1
+//        )
+//        Log.i("image",sampleImages.size.toString())
+//
+//        mainCarouselView.pageCount = sampleImages.size
+//
+//        mainCarouselView.setImageListener{position, imageView ->
+//            imageView.setImageResource(sampleImages[position])
+//        }
 
-        Timber.i("onCreate")
+
+
 
 //        binding.button2.setOnClickListener{
 //            pushButton()

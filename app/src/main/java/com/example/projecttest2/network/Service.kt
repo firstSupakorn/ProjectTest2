@@ -131,89 +131,9 @@ object PromotionsApi {
 }
 
 object ApiService{
-    private var token = ""
-    private lateinit var apiClient: ApiClient
     private lateinit var sessionManager: SessionManager
 
 
-//    fun login(){
-//        apiClient = ApiClient()
-//        sessionManager = SessionManager(this)
-//
-//    }
-
-    fun getToken(context: Context){
-        sessionManager = SessionManager(context)
-        val userInfo = UserInfo("admin@jaymart","Jaymart@2020")
-        PromotionsApi.retrofitService.getToken(userInfo).enqueue(
-                object : Callback<TokenInfo> {
-                    override fun onFailure(call: Call<TokenInfo>, t: Throwable) {
-                        Log.i("api", t.message.toString())
-                    }
-
-                    override fun onResponse(call: Call<TokenInfo>, response: retrofit2.Response<TokenInfo>) {
-                        val tokenVar = response.body()
-                        token = tokenVar?.token.toString()
-                        sessionManager.saveAuthToken(token)
-                        Log.i("api",tokenVar?.token.toString())
-                    }
-                }
-        )
-    }
-
-    fun getToken2(context: Context) {
-        // Used to check token
-        sessionManager = SessionManager(context)
-
-        val token = sessionManager.fetchAuthToken()
-        Log.i("api",token.toString())
-
-    }
-
-    fun getMobileSub(context: Context){
-        sessionManager = SessionManager(context)
-        val token = sessionManager.fetchAuthToken()
-        PromotionsApi.retrofitService.getMobileSub("Bearer ${token}" ).enqueue(
-                object : Callback<MobileSubInfo> {
-                    override fun onFailure(call: Call<MobileSubInfo>, t: Throwable) {
-                        Log.i("api", "Fail")
-                    }
-
-                    override fun onResponse(call: Call<MobileSubInfo>, response: retrofit2.Response<MobileSubInfo>) {
-                        if (response.isSuccessful) {
-                            val json = response.body()
-                            Log.i("api", "mobile sub: ${json.toString()}")
-                        }
-                        else{
-                                Log.i("api", "Please Login")
-                            }
-
-                    }
-                }
-    )
-    }
-
-
-    fun getPromotion(context: Context) {
-        sessionManager = SessionManager(context)
-        val token = sessionManager.fetchAuthToken()
-        PromotionsApi.retrofitService.getPromotion("Bearer ${token}").enqueue(
-                object : Callback<PromotionInfo> {
-                    override fun onFailure(call: Call<PromotionInfo>, t: Throwable) {
-                        Log.i("api", "Fail")
-                    }
-
-                    override fun onResponse(call: Call<PromotionInfo>, response: retrofit2.Response<PromotionInfo>) {
-                        if (response.isSuccessful) {
-                            val json = response.body()
-                            Log.i("api", json.toString())
-                        } else {
-                            Log.i("api", "Please Login")
-                        }
-                    }
-                }
-        )
-    }
 
 }
 

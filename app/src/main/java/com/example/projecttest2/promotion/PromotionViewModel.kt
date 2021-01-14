@@ -1,16 +1,20 @@
 package com.example.projecttest2.promotion
 
 import android.app.Application
+import android.widget.Adapter
+import androidx.core.content.ContentProviderCompat
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.projecttest2.database.DaoMap
 import kotlinx.coroutines.launch
+import java.security.AccessController.getContext
 
 class PromotionViewModel(
         val database: DaoMap,
         application: Application) : AndroidViewModel(application) {
 
-    private val promotionRepository = PromotionRepository(database)
+    private val promotionRepository = PromotionRepository(database, application )
 
     init {
         viewModelScope.launch {
@@ -18,19 +22,5 @@ class PromotionViewModel(
         }
     }
 
-//    fun getPromotion(){
-//    PromotionsApi.retrofitService.getPromotion().enqueue(
-//        object : Callback<JsonObject> {
-//            override fun onFailure(call: Call<JsonObject>, t: Throwable) {
-//                Log.i("api", "Fail")
-//            }
-//
-//            override fun onResponse(call: Call<JsonObject>, response: retrofit2.Response<JsonObject>) {
-//                val promotionImageUrl = response.body()
-//                Log.i("api",promotionImageUrl.toString())
-//            }
-//        }
-//        )
-//    }
 
 }

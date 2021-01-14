@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
             name="promotionViewModel"
             type="com.example.projecttest2.promotion.PromotionViewModel" />
     </data>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".promotion.PromotionFragment">
 
-</LinearLayout>
+    <com.synnapps.carouselview.CarouselView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/carouselview"
+        app:fillColor="#FFFFFF"
+        app:slideInterval="4000"
+        app:autoPlay="true"
+        />
+
+</RelativeLayout>
 
 </layout>
