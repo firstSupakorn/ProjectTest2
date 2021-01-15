@@ -1,5 +1,6 @@
 package com.example.projecttest2.iphone
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -24,12 +25,19 @@ class IphoneHolder(inflater: LayoutInflater, parent: ViewGroup) :
 
     }
 
-    fun bind(iphone: IphoneData) {
+    fun bind(iphone: IphoneData, action:OnIphoneItemClickListner) {
         mTitleView?.text = iphone.display
         mYearView?.text = iphone.imageUrl
         Picasso.get().load(iphone.imageUrl).resize(50, 50)
                 .centerCrop()
                 .into(imageIphoneView)
+
+        itemView.setOnClickListener{
+            action.onItemClick(iphone,adapterPosition)
+        }
+
     }
+
+
 
 }

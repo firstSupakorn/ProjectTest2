@@ -1,5 +1,6 @@
 package com.example.projecttest2.iphone
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -7,7 +8,7 @@ import com.example.projecttest2.database.IphoneData
 import com.example.projecttest2.database.MapData
 
 
-class IphoneAdapter(private val list: List<IphoneData>)
+class IphoneAdapter(private val list: List<IphoneData>, var clickListner: OnIphoneItemClickListner)
     : RecyclerView.Adapter<IphoneHolder>() {
 
     var iphones: List<IphoneData> = emptyList()
@@ -16,7 +17,6 @@ class IphoneAdapter(private val list: List<IphoneData>)
             notifyDataSetChanged()
         }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IphoneHolder {
         val inflater = LayoutInflater.from(parent.context)
         return IphoneHolder(inflater, parent)
@@ -24,9 +24,14 @@ class IphoneAdapter(private val list: List<IphoneData>)
 
     override fun onBindViewHolder(holder: IphoneHolder, position: Int) {
         val iphone: IphoneData = list[position]
-        holder.bind(iphone)
+        holder.bind(iphone, clickListner)
     }
 
     override fun getItemCount(): Int = list.size
 
+}
+
+interface OnIphoneItemClickListner{
+    fun onItemClick(item: IphoneData, position: Int){
+    }
 }
