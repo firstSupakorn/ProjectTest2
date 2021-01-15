@@ -56,20 +56,20 @@ class PromotionFragment : Fragment() {
 //        })
 
 //        for test carouselView-----------------------------------------------------
-//        val carouselView = binding.carouselview
-//        carouselView.setPageCount(imageUrlList.size)
-//        carouselView.setImageListener{ position, imageView ->
-//            Picasso.get().load(imageUrlList[position]).into(imageView)
-//        }
-//
-
-        promotionViewModel.promotions.observe(viewLifecycleOwner, Observer<List<Url>> {
         val carouselView = binding.carouselview
-        carouselView.setPageCount(it.size)
-        carouselView.setImageListener { position, imageView ->
-            Picasso.get().load(it[position]).into(imageView)
+        carouselView.setPageCount(imageUrlList.size)
+        carouselView.setImageListener{ position, imageView ->
+            Picasso.get().load(imageUrlList[position]).into(imageView)
         }
-        })
+
+
+//        promotionViewModel.promotions.observe(viewLifecycleOwner, Observer<List<Url>> {
+//        val carouselView = binding.carouselview
+//        carouselView.setPageCount(it.size)
+//        carouselView.setImageListener { position, imageView ->
+//            Picasso.get().load(it[position]).into(imageView)
+//        }
+//        })
 
 
         return binding.root

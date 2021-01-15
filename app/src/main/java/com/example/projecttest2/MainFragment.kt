@@ -36,7 +36,7 @@ class MainFragment : Fragment() {
 
         binding.iphoneButton.setOnClickListener { view: View ->
 //            getToken2(requireContext())
-//            getMobileSub(requireContext())
+            getMobileSub(requireContext())
 //            MapDataBase.getDataBase(application).daoMap().insertMap(MapData(10,"IPHONe11"))
 //            Log.i("getDatabase", MapDataBase.getDataBase(application).daoMap().getMap(10).name!!)
             Navigation.findNavController(view).navigate(R.id.action_mainFragment5_to_iphoneFragment)

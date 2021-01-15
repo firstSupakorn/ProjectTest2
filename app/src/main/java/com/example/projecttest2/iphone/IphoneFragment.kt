@@ -16,8 +16,6 @@ import com.example.projecttest2.databinding.FragmentIphoneBinding
 import kotlinx.android.synthetic.main.fragment_iphone.*
 
 class IphoneFragment : Fragment() {
-//    val application = requireNotNull(this.activity).application
-//    private val iphoneList = MapDataBase.getDataBase(application).daoMap().getAllMap()
     private val iphoneList = listOf(
             MapData(1, "256GB"),
             MapData(2, "256GB"),
@@ -32,7 +30,6 @@ class IphoneFragment : Fragment() {
         // Get a reference to the binding object and inflate the fragment views.
         val binding: FragmentIphoneBinding = DataBindingUtil.inflate(
                 inflater, R.layout.fragment_iphone, container, false)
-        Log.i("test","iphone")
 
         val application = requireNotNull(this.activity).application
 

@@ -22,35 +22,6 @@ data class PromotionInfo(
 )
 class PromotionApi{
 
-    fun getPromotionToDataBase(context: Context) {
-        val sessionManager = SessionManager(context)
-        val token = sessionManager.fetchAuthToken()
-
-        PromotionsApi.retrofitService.getPromotion("Bearer ${token}").enqueue(
-                object : Callback<PromotionInfo> {
-                    override fun onFailure(call: Call<PromotionInfo>, t: Throwable) {
-                        Log.i("api", "Please Login")
-                    }
-
-                    override fun onResponse(call: Call<PromotionInfo>, response: retrofit2.Response<PromotionInfo>) {
-                        if (response.isSuccessful) {
-                            val json = response.body()
-                            insertIntoDatabase(1,json?.image01.toString(),context)
-                            insertIntoDatabase(2,json?.image02.toString(),context)
-                            insertIntoDatabase(3,json?.image03.toString(),context)
-                            insertIntoDatabase(4,json?.image04.toString(),context)
-                            insertIntoDatabase(5,json?.image05.toString(),context)
-                            insertIntoDatabase(6,json?.image06.toString(),context)
-                            insertIntoDatabase(7,json?.image07.toString(),context)
-                        }
-                        else {
-                            Log.i("api", "Please Login")
-                        }
-                    }
-                }
-        )
-    }
-
     fun getPromotion(context: Context):MutableLiveData<PromotionInfo> {
         val sessionManager = SessionManager(context)
         val token = sessionManager.fetchAuthToken()
@@ -75,13 +46,5 @@ class PromotionApi{
                 }
         )
         return data
-    }
-
-
-
-    fun insertIntoDatabase(id: Int,imageUrl: String,context: Context){
-        MapDataBase.getDataBase(context).daoMap().insertPromotion(PromotionData(id,imageUrl))
-        Log.i("getDatabase", MapDataBase.getDataBase(context).daoMap().getUniquePromotion(id).url!!)
-
     }
 }
