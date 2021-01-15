@@ -11,7 +11,7 @@ import com.example.projecttest2.network.PromotionInfo
 //@Database(entities = { MapData.class, PromotionData.class },version = 1,exportSchema = false)
 
 
-@Database(entities = [(MapData::class),(PromotionData::class)],version = 1,exportSchema = false)
+@Database(entities = [(MapData::class),(PromotionData::class),(IphoneData::class)],version = 1,exportSchema = false)
 abstract class MapDataBase : RoomDatabase() {
     companion object {
         private var INSTANCE: MapDataBase? = null

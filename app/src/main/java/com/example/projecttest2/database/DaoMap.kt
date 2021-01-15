@@ -32,5 +32,12 @@ interface DaoMap {
 //    @Query("SELECT COUNT(id) FROM table WHERE is_checked = 1")
 //    fun getCount(): Int
 
+//----------------------------------------------
+    @Query("select * from iphones")
+    fun getAllIphone(): LiveData<List<IphoneData>>
+    @Query("select * from iphones where id in (:id)")
+    fun getUniqueIphone(id: Int): IphoneData
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertIphone(iphone: IphoneData)
 }
 

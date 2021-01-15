@@ -3,11 +3,19 @@ package com.example.projecttest2.iphone
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.projecttest2.database.IphoneData
 import com.example.projecttest2.database.MapData
 
 
-class IphoneAdapter(private val list: List<MapData>)
+class IphoneAdapter(private val list: List<IphoneData>)
     : RecyclerView.Adapter<IphoneHolder>() {
+
+    var iphones: List<IphoneData> = emptyList()
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IphoneHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -15,7 +23,7 @@ class IphoneAdapter(private val list: List<MapData>)
     }
 
     override fun onBindViewHolder(holder: IphoneHolder, position: Int) {
-        val iphone: MapData = list[position]
+        val iphone: IphoneData = list[position]
         holder.bind(iphone)
     }
 

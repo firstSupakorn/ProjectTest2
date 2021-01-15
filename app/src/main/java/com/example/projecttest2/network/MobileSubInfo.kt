@@ -9,10 +9,12 @@ import retrofit2.Callback
 
 object MobileApi{
     fun getMobileSub(context: Context): MutableLiveData<MobileSub05> {
+
         val sessionManager = SessionManager(context)
         val token = sessionManager.fetchAuthToken()
 
         var data: MutableLiveData<MobileSub05> = MutableLiveData()
+        Log.i("api", "get MobileSub")
 
         PromotionsApi.retrofitService.getMobileSub("Bearer ${token}" ).enqueue(
                 object : Callback<MobileSubInfo> {
@@ -23,23 +25,17 @@ object MobileApi{
                     override fun onResponse(call: Call<MobileSubInfo>, response: retrofit2.Response<MobileSubInfo>) {
                         if (response.isSuccessful) {
                             val json = response.body()
-                            Log.i("api", "mobile sub: ${json.toString()}")
+                            data.postValue(response.body()?.mobileSub05)
                         }
                         else{
                             Log.i("api", "Please Login")
                         }
-
                     }
                 }
         )
         return data
     }
 }
-
-
-
-
-
 
 data class MobileSubInfo (
         val mobileSub01 : MobileSub01,

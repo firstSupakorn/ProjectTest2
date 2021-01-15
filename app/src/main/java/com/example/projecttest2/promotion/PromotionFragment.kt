@@ -62,14 +62,16 @@ class PromotionFragment : Fragment() {
             Picasso.get().load(imageUrlList[position]).into(imageView)
         }
 
+        Log.i("getDatabase","Fragment oncreate")
 
-//        promotionViewModel.promotions.observe(viewLifecycleOwner, Observer<List<Url>> {
+        promotionViewModel.promotions.observe(viewLifecycleOwner, Observer<List<Url>> {
+            Log.i("getDatabase","observe list size : ${it.size}")
 //        val carouselView = binding.carouselview
-//        carouselView.setPageCount(it.size)
+//        carouselView.setPageCount(it.size.toString())
 //        carouselView.setImageListener { position, imageView ->
 //            Picasso.get().load(it[position]).into(imageView)
 //        }
-//        })
+        })
 
 
         return binding.root

@@ -10,18 +10,20 @@ import androidx.databinding.DataBindingUtil
 
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.projecttest2.R
+import com.example.projecttest2.database.IphoneData
 import com.example.projecttest2.database.MapData
 import com.example.projecttest2.database.MapDataBase
+import com.example.projecttest2.database.Url
 import com.example.projecttest2.databinding.FragmentIphoneBinding
 import kotlinx.android.synthetic.main.fragment_iphone.*
 
 class IphoneFragment : Fragment() {
     private val iphoneList = listOf(
-            MapData(1, "256GB"),
-            MapData(2, "256GB"),
-            MapData(3, "256GB"),
-            MapData(4, "256GB"),
-            MapData(5, "256GB")
+            IphoneData(1, "256GB",";http","123"),
+            IphoneData(2, "256GB",";http","123"),
+            IphoneData(3, "256GB",";http","123"),
+            IphoneData(4, "256GB",";http","123"),
+            IphoneData(5, "256GB",";http","123")
     )
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -37,19 +39,30 @@ class IphoneFragment : Fragment() {
 
         val iphoneViewModel = IphoneViewModel(dataSource, application)
 
-        val iphoneList = dataSource.getAllMap()
 
         binding.iphoneViewModel = iphoneViewModel
+
+        val iphoneList1 = dataSource.getAllIphone()
+
+        iphoneList1.observeForever{
+            val iphoneAdapter = IphoneAdapter(it)
+            binding.listRecyclerView.apply{
+                layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
+                adapter = iphoneAdapter
+            }
+        }
+
+
+
 
 
 //        val jsonMobileSub = iphoneViewModel.getMobileSub()
 //        Log.i("api",binding.jsonMobileSub.toString())
 
 
-
-        for (item in iphoneList) {
-            Log.i("getDatabase", item.name!!)
-        }
+//        for (item in iphoneList) {
+//            Log.i("getDatabase", item.name!!)
+//        }
 
 
         return binding.root
@@ -58,11 +71,11 @@ class IphoneFragment : Fragment() {
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        list_recycler_view.apply{
-            layoutManager = GridLayoutManager(context, 1, GridLayoutManager.HORIZONTAL, false)
-            adapter = IphoneAdapter(iphoneList)
-
-        }
+//        list_recycler_view.apply{
+//            layoutManager = GridLayoutManager(context, 1, GridLayoutManager.HORIZONTAL, false)
+//            adapter = IphoneAdapter(iphoneList)
+//
+//        }
 
     }
 

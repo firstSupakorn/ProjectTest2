@@ -9,7 +9,7 @@
     android:padding="8dp">
 
     <ImageView
-        android:id="@+id/imgMember"
+        android:id="@+id/imgIphone"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_margin="8dp"
