@@ -19,7 +19,7 @@ import com.synnapps.carouselview.ImageListener
 
 var mylist = ArrayList<String>()
 
-var imageUrlList= arrayOf(
+var imageUrlList= listOf(
         "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg",
         "https://raw.githubusercontent.com/sayyam/carouselview/master/sample/src/main/res/drawable/image_1.jpg",
         "https://raw.githubusercontent.com/sayyam/carouselview/master/sample/src/main/res/drawable/image_2.jpg",
@@ -55,13 +55,13 @@ class PromotionFragment : Fragment() {
 //            Log.i("liveData","size : "+it.size.toString())
 //        })
 
-
+//        for test carouselView-----------------------------------------------------
 //        val carouselView = binding.carouselview
 //        carouselView.setPageCount(imageUrlList.size)
 //        carouselView.setImageListener{ position, imageView ->
 //            Picasso.get().load(imageUrlList[position]).into(imageView)
 //        }
-
+//
 
         promotionViewModel.promotions.observe(viewLifecycleOwner, Observer<List<Url>> {
         val carouselView = binding.carouselview
