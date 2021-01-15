@@ -23,6 +23,7 @@ var imageUrlList= listOf(
         "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg",
         "https://raw.githubusercontent.com/sayyam/carouselview/master/sample/src/main/res/drawable/image_1.jpg",
         "https://raw.githubusercontent.com/sayyam/carouselview/master/sample/src/main/res/drawable/image_2.jpg",
+        "https://fibo.jaymart.org/asset/Images/02/Mobilesub/a17e9165-c7fe-4951-a977-cba60b399f4b.png",
         "https://fibo.jaymart.org/asset/Images/02/Promotion/1d834a8d-070c-4f91-8da6-0232c8d3c17f.jpg",
         "https://fibo.jaymart.org/asset/Images/02/Promotion/ac51ad4f-62c2-4f34-8ab8-57dc464e8cd7.jpg",
         "https://fibo.jaymart.org/asset/Images/02/Promotion/7babf5c8-300f-4932-816a-b8259b676826.jpg"
@@ -59,32 +60,21 @@ class PromotionFragment : Fragment() {
         val carouselView = binding.carouselview
         carouselView.setPageCount(imageUrlList.size)
         carouselView.setImageListener{ position, imageView ->
-            Picasso.get().load(imageUrlList[position]).into(imageView)
+            Picasso.get().load(R.drawable.iphonebg).into(imageView)
         }
 
         Log.i("getDatabase","Fragment oncreate")
 
-        promotionViewModel.promotions.observe(viewLifecycleOwner, Observer<List<Url>> {
-            Log.i("getDatabase","observe list size : ${it.size}")
+//        promotionViewModel.promotions.observe(viewLifecycleOwner, Observer<List<Url>> {
+//            Log.i("getDatabase","observe list size : ${it.size}")
 //        val carouselView = binding.carouselview
 //        carouselView.setPageCount(it.size.toString())
 //        carouselView.setImageListener { position, imageView ->
 //            Picasso.get().load(it[position]).into(imageView)
 //        }
-        })
+//        })
 
 
         return binding.root
     }
-
-
-
-//    var imageListener: ImageListener = object : ImageListener {
-//        override fun setImageForPosition(position: Int, imageView: ImageView) {
-//            Picasso.get().load(mylist[position]).into(imageView)
-////            Picasso.get().load(imageUrlList[position]).into(imageView)
-//
-//        }
-//    }
-
 }

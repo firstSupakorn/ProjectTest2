@@ -27,7 +27,9 @@ class IphoneHolder(inflater: LayoutInflater, parent: ViewGroup) :
     fun bind(iphone: IphoneData) {
         mTitleView?.text = iphone.display
         mYearView?.text = iphone.imageUrl
-        Picasso.get().load(iphone.imageUrl).into(imageIphoneView)
+        Picasso.get().load(iphone.imageUrl).resize(50, 50)
+                .centerCrop()
+                .into(imageIphoneView)
     }
 
 }
