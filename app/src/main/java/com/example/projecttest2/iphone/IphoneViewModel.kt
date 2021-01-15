@@ -17,6 +17,7 @@ class IphoneViewModel(val database: DaoMap,
         }
     }
 
+
 //    fun getMobileSub(){
 //        PromotionsApi.retrofitService.getMobileSub().enqueue(
 //            object : Callback<JsonObject> {

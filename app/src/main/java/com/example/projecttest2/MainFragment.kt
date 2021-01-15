@@ -35,11 +35,11 @@ class MainFragment : Fragment() {
 //        binding.mainViewModel = mainViewModel
 
         binding.iphoneButton.setOnClickListener { view: View ->
-            getToken2(requireContext())
-            getMobileSub(requireContext())
+//            getToken2(requireContext())
+//            getMobileSub(requireContext())
 //            MapDataBase.getDataBase(application).daoMap().insertMap(MapData(10,"IPHONe11"))
 //            Log.i("getDatabase", MapDataBase.getDataBase(application).daoMap().getMap(10).name!!)
-//            Navigation.findNavController(view).navigate(R.id.action_mainFragment5_to_iphoneFragment)
+            Navigation.findNavController(view).navigate(R.id.action_mainFragment5_to_iphoneFragment)
         }
         binding.promotionButton.setOnClickListener { view: View ->
 //            ApiService.getPromotion(requireContext())
@@ -51,15 +51,16 @@ class MainFragment : Fragment() {
             Navigation.findNavController(view).navigate(R.id.action_mainFragment5_to_videoFragment)
         }
         binding.loginButton.setOnClickListener { view: View ->
-//            getToken(requireContext())
-            val promotionDB = MapDataBase.getDataBase(application).daoMap().getAllPromotion()
-            for (i in promotionDB)
-            {
-                Log.i("getDatabase","promotion DB ${i.id.toString()} ${i.url}")
-            }
+            getToken(requireContext())
+//            //  for test database
+//            val allPromotion = MapDataBase.getDataBase(application).daoMap().getAllPromotion()
+//            for (i in allPromotion) {
+//                Log.i("getDatabase", "${i.id.toString()}  :  ${i.url.toString()}")
+//            }
         }
+
         return binding.root
 
     }
-
 }
+

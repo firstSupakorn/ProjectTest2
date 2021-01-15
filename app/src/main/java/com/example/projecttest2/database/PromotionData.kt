@@ -12,3 +12,13 @@ data class PromotionData (
         @ColumnInfo(name = "url")
         var url: String?
 )
+
+data class Url(val url: String)
+
+fun List<PromotionData>.asDomainModel(): List<Url> {
+        return map {
+                Url(
+                        url = it.url.toString()
+                )
+        }
+}

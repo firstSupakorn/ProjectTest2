@@ -20,7 +20,10 @@ class IphoneFragment : Fragment() {
 //    private val iphoneList = MapDataBase.getDataBase(application).daoMap().getAllMap()
     private val iphoneList = listOf(
             MapData(1, "256GB"),
-            MapData(2, "256GB")
+            MapData(2, "256GB"),
+            MapData(3, "256GB"),
+            MapData(4, "256GB"),
+            MapData(5, "256GB")
     )
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -59,7 +62,7 @@ class IphoneFragment : Fragment() {
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         list_recycler_view.apply{
-            layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
+            layoutManager = GridLayoutManager(context, 1, GridLayoutManager.HORIZONTAL, false)
             adapter = IphoneAdapter(iphoneList)
 
         }

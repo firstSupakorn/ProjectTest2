@@ -1,6 +1,7 @@
 package com.example.projecttest2.database
 
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 
 /**
@@ -22,11 +23,14 @@ interface DaoMap {
 
     //----------------------------------------------
     @Query("select * from promotions")
-    fun getAllPromotion():List<PromotionData>
+    fun getAllPromotion(): LiveData<List<PromotionData>>
     @Query("select * from promotions where id in (:id)")
     fun getUniquePromotion(id: Int): PromotionData
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertPromotion(promotion: PromotionData)
+
+//    @Query("SELECT COUNT(id) FROM table WHERE is_checked = 1")
+//    fun getCount(): Int
 
 }
 
