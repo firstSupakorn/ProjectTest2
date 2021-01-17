@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
+import com.example.projecttest2.database.IphoneData
 import com.example.projecttest2.database.MapData
 import com.example.projecttest2.database.MapDataBase
 import com.example.projecttest2.database.PromotionData
@@ -48,7 +49,9 @@ class MainFragment : Fragment() {
             Navigation.findNavController(view).navigate(R.id.action_mainFragment5_to_promotionFragment)
         }
         binding.videoButton.setOnClickListener { view: View ->
-            Navigation.findNavController(view).navigate(R.id.action_mainFragment5_to_videoFragment)
+            MapDataBase.getDataBase(application).daoMap().insertIphone(IphoneData(11,"iphone100","http","iphone100"))
+
+//            Navigation.findNavController(view).navigate(R.id.action_mainFragment5_to_videoFragment)
         }
         binding.loginButton.setOnClickListener { view: View ->
             getToken(requireContext())

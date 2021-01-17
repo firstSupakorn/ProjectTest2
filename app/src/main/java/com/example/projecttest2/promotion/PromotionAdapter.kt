@@ -4,13 +4,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Adapter
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager.widget.PagerAdapter
 import com.example.projecttest2.R
 import com.example.projecttest2.database.MapData
+import com.example.projecttest2.database.Url
 import com.example.projecttest2.iphone.IphoneHolder
 import com.makeramen.roundedimageview.RoundedImageView
 import kotlinx.android.synthetic.main.list_promotion_image.view.*
+import java.lang.reflect.Array.newInstance
 
 class PromotionAdapter():RecyclerView.Adapter<PromotionAdapter.PromotionViewHolder>(){
 
@@ -35,4 +40,3 @@ class PromotionAdapter():RecyclerView.Adapter<PromotionAdapter.PromotionViewHold
     }
 
 }
-

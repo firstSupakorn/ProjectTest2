@@ -132,9 +132,6 @@ object PromotionsApi {
 
 object ApiService{
     private lateinit var sessionManager: SessionManager
-
-
-
 }
 
 

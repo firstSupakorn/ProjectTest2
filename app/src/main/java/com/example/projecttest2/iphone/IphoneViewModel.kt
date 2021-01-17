@@ -43,13 +43,13 @@ class IphoneViewModel(val database: DaoMap,
             for ((key, values) in jsonPromotion.entrySet()) {
 //                Log.i("api","key: ${key} value: ${values}")
                 if (key!="brand") {
-                    val display = values?.asJsonObject?.get("display").toString()
-                    val imageNormal = values?.asJsonObject?.get("imageNormal").toString()
-                    val model = values?.asJsonObject?.get("model").toString()
-
-
-                    insertIntoDatabase(index,display,imageNormal,model)
-                    index = index + 1
+                    val display = values?.asJsonObject?.get("display").toString().replace("\"","")
+                    val imageNormal = values?.asJsonObject?.get("imageNormal").toString().replace("\"","")
+                    val model = values?.asJsonObject?.get("model").toString().replace("\"","")
+                    if(display != "disable"){
+                        insertIntoDatabase(index,display,imageNormal,model)
+                        index = index + 1
+                    }
                 }
             }
         }

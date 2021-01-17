@@ -23,6 +23,8 @@ interface DaoMap {
 
     //----------------------------------------------
     @Query("select * from promotions")
+    fun getPromotions(): List<PromotionData>
+    @Query("select * from promotions")
     fun getAllPromotion(): LiveData<List<PromotionData>>
     @Query("select * from promotions where id in (:id)")
     fun getUniquePromotion(id: Int): PromotionData

@@ -10,6 +10,7 @@ import com.example.projecttest2.R
 import com.example.projecttest2.database.IphoneData
 import com.example.projecttest2.database.MapData
 import com.squareup.picasso.Picasso
+import com.synnapps.carouselview.CarouselView
 
 class IphoneHolder(inflater: LayoutInflater, parent: ViewGroup) :
     RecyclerView.ViewHolder(inflater.inflate(R.layout.iphone_item, parent, false)) {
@@ -28,11 +29,16 @@ class IphoneHolder(inflater: LayoutInflater, parent: ViewGroup) :
     fun bind(iphone: IphoneData, action:OnIphoneItemClickListner) {
         mTitleView?.text = iphone.display
         mYearView?.text = iphone.imageUrl
+        Log.i("api","${iphone.imageUrl}")
+
+
+
         Picasso.get().load(iphone.imageUrl).resize(50, 50)
                 .centerCrop()
                 .into(imageIphoneView)
 
         itemView.setOnClickListener{
+            Log.i("onclick","click")
             action.onItemClick(iphone,adapterPosition)
         }
 

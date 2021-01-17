@@ -1,14 +1,17 @@
 package com.example.projecttest2.iphone
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.projecttest2.MainActivity
 import com.example.projecttest2.R
 import com.example.projecttest2.database.IphoneData
 import com.example.projecttest2.database.MapData
@@ -39,7 +42,6 @@ class IphoneFragment : Fragment(), OnIphoneItemClickListner {
 
         val iphoneViewModel = IphoneViewModel(dataSource, application)
 
-
         binding.iphoneViewModel = iphoneViewModel
 
         val iphoneList1 = dataSource.getAllIphone()
@@ -57,9 +59,14 @@ class IphoneFragment : Fragment(), OnIphoneItemClickListner {
 
 
     override fun onItemClick(item: IphoneData, position: Int) {
+        val intent = Intent(context, SubIphoneActivity::class.java)
+        intent.putExtra("IPHONEMODEL", item.model)
+        intent.putExtra("IPHONEDESC", item.display)
         Log.i("onclick","click")
         Log.i("onclick","${item.display}")
         Log.i("onclick","${item.model}")
+        startActivity(intent)
+
     }
     }
 

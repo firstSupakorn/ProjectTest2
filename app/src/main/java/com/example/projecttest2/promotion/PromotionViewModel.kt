@@ -48,7 +48,7 @@ class PromotionViewModel(
         var index = 1
         for ((key, values) in jsonPromotion.entrySet())
         {
-            insertIntoDatabase(index,values.toString())
+            insertIntoDatabase(index,values.toString().replace("\"",""))
             index = index + 1
         }
         }

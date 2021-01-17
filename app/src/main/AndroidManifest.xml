@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjectTest2">
         <activity
+            android:name=".iphone.SubIphoneActivity"
+            android:label="@string/title_activity_sub_iphone"
+            android:theme="@style/Theme.ProjectTest2.NoActionBar"></activity>
+        <activity
             android:name=".iphonePage"
             android:label="@string/title_activity_iphone_page"
-            android:theme="@style/Theme.ProjectTest2.NoActionBar"></activity>
+            android:theme="@style/Theme.ProjectTest2.NoActionBar" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

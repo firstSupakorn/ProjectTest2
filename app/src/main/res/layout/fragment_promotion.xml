@@ -11,6 +11,16 @@
     android:layout_height="match_parent"
     tools:context=".promotion.PromotionFragment">
 
+    <com.custom.sliderimage.logic.SliderImage
+        android:id="@+id/slider"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent" />
+
     <com.synnapps.carouselview.CarouselView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
