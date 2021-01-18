@@ -56,6 +56,7 @@ class IphoneFragment : Fragment(), OnIphoneItemClickListner {
         val iphoneList1 = dataSource.getAllIphone()
 
         iphoneList1.observeForever{
+            Log.i("testwtfbug","${it}")
             val iphoneAdapter = IphoneAdapter(it,this)
             binding.listRecyclerView.apply{
                 layoutManager = GridLayoutManager(context, 1, GridLayoutManager.VERTICAL, false)
@@ -70,15 +71,16 @@ class IphoneFragment : Fragment(), OnIphoneItemClickListner {
     override fun onItemClick(item: IphoneData, position: Int) {
         val intent = Intent(context, SubIphoneActivity::class.java)
 
+        val application = requireNotNull(this.activity).application
 
-//        val jmartProductInfo = dataSource.getUniqueJmartProduct(item.display.toString())
-
-//        Log.i("jmart","${jmartProductInfo}")
-
-//        JmartApi.getJmartData(requireContext(),"iPhone 11 Pro")
+        val dataSource = MapDataBase.getDataBase(application).daoMap()
+        val jmartAllProductInfo = dataSource.getAllJmart()
+        val jmartProductInfo = dataSource.getUniqueJmartProduct(item.display.toString())
 
         intent.putExtra("IPHONEMODEL", item.model)
         intent.putExtra("IPHONEDESC", item.display)
+        intent.putExtra("IPHONEIMAGEURL", item.imageUrl)
+
         Log.i("onclick","click")
         Log.i("onclick","${item.display}")
         Log.i("onclick","${item.model}")

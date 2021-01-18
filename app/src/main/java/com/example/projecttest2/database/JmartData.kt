@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class JmartData (
         @PrimaryKey(autoGenerate = true)
         @ColumnInfo(name = "id")
-        var id : Int,
+        var id : Int?,
         @ColumnInfo(name = "modelDesc")
         var modelDesc: String?,
         @ColumnInfo(name = "rom")

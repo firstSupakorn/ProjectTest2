@@ -41,25 +41,27 @@ class IphoneViewModel(val database: DaoMap,
     fun refreshJmart(modelDesc: String){
         Log.i("jmart","--------------------------------------------------")
         getProductLiveData(modelDesc).observeForever {
-            var index = 1
+
+//            var index = 1
+
             for (i in it)
             {
                 val regexGbMatcher = "[_]\\d{2,3}".toRegex()
                 val regexModelDescMacher = "([^_]+)".toRegex()
                 val jsonObject = i.asJsonObject
                 val modelDescription = jsonObject.get("modelDesc")
-                val itemName = jsonObject.get("modelDesc")
+                val itemName = jsonObject.get("modelDesc").toString()
                 val rom = regexGbMatcher.findAll(modelDescription.toString()).map{it.value}.toList()[0].replace("_","")
                 val filterItemName = regexModelDescMacher.findAll(itemName.toString()).map{it.value}.toList()[0].replace("\"","")
                 val price = jsonObject.get("stdPrice").toString()
                 val isNullPrice = jsonObject.get("stdPrice").isJsonNull
+                val index = MapDataBase.getDataBase(getApplication()).daoMap().getId(modelDesc,rom)
 //                val image = jsonObject.get("itemSpec").asJsonObject.get("IMAGE")
 
                 if (modelDesc.toLowerCase() == filterItemName.toLowerCase() && !isNullPrice)
                 {
-//                    insertIntoJmartDatabase(index,modelDesc,rom,price)
-                    index = index + 1
-                    Log.i("jmart","${modelDesc}   ${itemName}  ${filterItemName}  ${rom} ${price} ")
+                    insertIntoJmartDatabase(index,modelDesc,rom,price)
+                    Log.i("jmartTest","add db ${index}   ${filterItemName}  ${filterItemName}  ${rom} ${price} ")
                 }
             }
         }
@@ -72,6 +74,7 @@ class IphoneViewModel(val database: DaoMap,
             Log.i("api", "--------------------${it.toString()}")
             val jsonPromotion: JsonObject = Gson().toJsonTree(it).asJsonObject
             var index = 1
+            var prevModel = ""
             for ((key, values) in jsonPromotion.entrySet()) {
                 if (key!="brand") {
                     val display = values?.asJsonObject?.get("display").toString().replace("\"","")
@@ -79,7 +82,7 @@ class IphoneViewModel(val database: DaoMap,
                     val model = values?.asJsonObject?.get("model").toString().replace("\"","")
                     if(display != "disable"){
                         insertIntoDatabase(index,display,imageNormal,model)
-//                        refreshJmart(display)
+                        refreshJmart(display)
                         index = index + 1
                     }
                 }
@@ -94,12 +97,13 @@ class IphoneViewModel(val database: DaoMap,
         MapDataBase.getDataBase(getApplication()).daoMap().getUniqueIphone(id).model!!)
     }
 
-    fun insertIntoJmartDatabase(id: Int,modelDesc: String, rom: String, price : String){
-        Log.i("jmart"," ${id} ${modelDesc}  ${rom} ${price} ")
-
-//        MapDataBase.getDataBase(getApplication()).daoMap().insertJmartProduct(JmartData(id,modelDesc,rom,price))
-//        Log.i("getDatabase", "id : $id  "+ MapDataBase.getDataBase(getApplication()).daoMap().getUniqueJmartProductId(id).modelDesc!!)
-
+    fun insertIntoJmartDatabase(id: Int?,modelDesc: String, rom: String, price : String){
+        if (id == 0){
+            MapDataBase.getDataBase(getApplication()).daoMap().insertJmartProduct(JmartData(null,modelDesc=modelDesc,rom=rom,price=price))
+        }
+        else{
+            MapDataBase.getDataBase(getApplication()).daoMap().insertJmartProduct(JmartData(id,modelDesc,rom,price))
+        }
     }
 
 
