@@ -18,6 +18,9 @@ import com.example.projecttest2.database.MapData
 import com.example.projecttest2.database.MapDataBase
 import com.example.projecttest2.database.Url
 import com.example.projecttest2.databinding.FragmentIphoneBinding
+import com.example.projecttest2.network.JmartApi
+import com.example.projecttest2.network.JmartApiService
+import com.example.projecttest2.network.MobileApi
 import kotlinx.android.synthetic.main.fragment_iphone.*
 
 class IphoneFragment : Fragment(), OnIphoneItemClickListner {
@@ -29,20 +32,26 @@ class IphoneFragment : Fragment(), OnIphoneItemClickListner {
             IphoneData(5, "256GB",";http","123")
     )
 
+
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-
-        // Get a reference to the binding object and inflate the fragment views.
-        val binding: FragmentIphoneBinding = DataBindingUtil.inflate(
-                inflater, R.layout.fragment_iphone, container, false)
+        Log.i("api","on create view")
 
         val application = requireNotNull(this.activity).application
 
         val dataSource = MapDataBase.getDataBase(application).daoMap()
 
+        // Get a reference to the binding object and inflate the fragment views.
+        val binding: FragmentIphoneBinding = DataBindingUtil.inflate(
+                inflater, R.layout.fragment_iphone, container, false)
+
+
         val iphoneViewModel = IphoneViewModel(dataSource, application)
+        Log.i("api","on create view")
 
         binding.iphoneViewModel = iphoneViewModel
+        Log.i("api","on create view")
 
         val iphoneList1 = dataSource.getAllIphone()
 
@@ -60,6 +69,14 @@ class IphoneFragment : Fragment(), OnIphoneItemClickListner {
 
     override fun onItemClick(item: IphoneData, position: Int) {
         val intent = Intent(context, SubIphoneActivity::class.java)
+
+
+//        val jmartProductInfo = dataSource.getUniqueJmartProduct(item.display.toString())
+
+//        Log.i("jmart","${jmartProductInfo}")
+
+//        JmartApi.getJmartData(requireContext(),"iPhone 11 Pro")
+
         intent.putExtra("IPHONEMODEL", item.model)
         intent.putExtra("IPHONEDESC", item.display)
         Log.i("onclick","click")

@@ -14,16 +14,16 @@ class SessionManager (context: Context) {
     /**
      * Function to save auth token
      */
-    fun saveAuthToken(token: String) {
+    fun saveAuthToken(token: String, type: String) {
         val editor = prefs.edit()
-        editor.putString(USER_TOKEN, token)
+        editor.putString(type, token)
         editor.apply()
     }
 
     /**
      * Function to fetch auth token
      */
-    fun fetchAuthToken(): String? {
-        return prefs.getString(USER_TOKEN, null)
+    fun fetchAuthToken(type: String): String? {
+        return prefs.getString(type, null)
     }
 }

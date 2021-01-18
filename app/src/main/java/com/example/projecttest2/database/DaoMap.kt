@@ -41,5 +41,16 @@ interface DaoMap {
     fun getUniqueIphone(id: Int): IphoneData
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertIphone(iphone: IphoneData)
+
+
+//----------------------------------------------
+//    @Insert(onConflict = OnConflictStrategy.REPLACE)
+//    fun insertJmartProduct(product: JmartData)
+//    @Query("select * from jmart where id in (:id)")
+//    fun getUniqueJmartProductId(id: Int): JmartData
+//    @Query("select * from jmart where modelDesc in (:modelDesc)")
+//    fun getUniqueJmartProduct(modelDesc: String): JmartData
+
+
 }
 

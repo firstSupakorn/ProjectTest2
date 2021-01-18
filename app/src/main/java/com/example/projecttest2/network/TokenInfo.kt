@@ -23,8 +23,27 @@ object TokenApi{
 
                     override fun onResponse(call: Call<TokenInfo>, response: retrofit2.Response<TokenInfo>) {
                         val token = response.body()?.token.toString()
-                        sessionManager.saveAuthToken(token)
+                        sessionManager.saveAuthToken(token,"jbotToken")
                         Log.i("api",token)
+                    }
+                }
+        )
+    }
+
+
+    fun getJmartToken(context: Context){
+        val sessionManager = SessionManager(context)
+        JmartCreateApi.retrofitService.getJmartToken().enqueue(
+                object : Callback<String> {
+                    override fun onFailure(call: Call<String>, t: Throwable) {
+                        Log.i("api", t.message.toString())
+                    }
+
+                    override fun onResponse(call: Call<String>, response: retrofit2.Response<String>) {
+                        val token = response.body().toString()
+                        sessionManager.saveAuthToken(token,"jmartToken")
+
+                        Log.i("api","jmart Token : "+token.toString())
                     }
                 }
         )
@@ -33,7 +52,7 @@ object TokenApi{
     fun getToken2(context: Context) {
         // Used to check token
         val sessionManager = SessionManager(context)
-        val token = sessionManager.fetchAuthToken()
+        val token = sessionManager.fetchAuthToken("jbot")
         Log.i("api",token.toString())
 
     }

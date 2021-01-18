@@ -17,6 +17,7 @@ import com.example.projecttest2.databinding.FragmentMainBinding
 import com.example.projecttest2.iphone.IphoneViewModel
 import com.example.projecttest2.network.ApiService
 import com.example.projecttest2.network.MobileApi.getMobileSub
+import com.example.projecttest2.network.TokenApi.getJmartToken
 import com.example.projecttest2.network.TokenApi.getToken
 import com.example.projecttest2.network.TokenApi.getToken2
 
@@ -55,6 +56,7 @@ class MainFragment : Fragment() {
         }
         binding.loginButton.setOnClickListener { view: View ->
             getToken(requireContext())
+            getJmartToken(requireContext())
 //            //  for test database
 //            val allPromotion = MapDataBase.getDataBase(application).daoMap().getAllPromotion()
 //            for (i in allPromotion) {

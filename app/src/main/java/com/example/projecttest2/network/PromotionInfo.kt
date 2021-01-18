@@ -24,7 +24,7 @@ class PromotionApi{
 
     fun getPromotion(context: Context):MutableLiveData<PromotionInfo> {
         val sessionManager = SessionManager(context)
-        val token = sessionManager.fetchAuthToken()
+        val token = sessionManager.fetchAuthToken("jbotToken")
 
         var data: MutableLiveData<PromotionInfo> = MutableLiveData()
 

@@ -11,7 +11,7 @@ object MobileApi{
     fun getMobileSub(context: Context): MutableLiveData<MobileSub05> {
 
         val sessionManager = SessionManager(context)
-        val token = sessionManager.fetchAuthToken()
+        val token = sessionManager.fetchAuthToken("jbotToken")
 
         var data: MutableLiveData<MobileSub05> = MutableLiveData()
         Log.i("api", "get MobileSub")

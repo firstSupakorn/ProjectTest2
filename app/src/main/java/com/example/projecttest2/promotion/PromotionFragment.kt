@@ -17,6 +17,7 @@ import com.example.projecttest2.database.PromotionData
 import com.example.projecttest2.database.Url
 import com.example.projecttest2.databinding.FragmentPromotionBinding
 import com.example.projecttest2.iphone.IphoneAdapter
+import com.example.projecttest2.iphone.IphoneViewModel
 import com.squareup.picasso.Picasso
 import com.synnapps.carouselview.ImageListener
 import kotlinx.android.synthetic.main.fragment_promotion.*
@@ -57,6 +58,8 @@ class PromotionFragment : Fragment() {
 
         val carouselView = binding.carouselview
 
+        val promotionViewModel = PromotionViewModel(dataSource, application)
+
         val listPromotionData = dataSource.getPromotions()
         carouselView.setPageCount(listPromotionData.size)
         carouselView.setImageListener { position, imageView ->
@@ -65,6 +68,6 @@ class PromotionFragment : Fragment() {
 
         return binding.root
     }
-    
+
 
 }
