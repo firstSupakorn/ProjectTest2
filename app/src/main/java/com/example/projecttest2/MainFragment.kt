@@ -1,7 +1,6 @@
 package com.example.projecttest2
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,17 +8,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import com.example.projecttest2.database.IphoneData
-import com.example.projecttest2.database.MapData
 import com.example.projecttest2.database.MapDataBase
-import com.example.projecttest2.database.PromotionData
-import com.example.projecttest2.databinding.FragmentIphoneBinding
 import com.example.projecttest2.databinding.FragmentMainBinding
-import com.example.projecttest2.iphone.IphoneViewModel
-import com.example.projecttest2.network.ApiService
-import com.example.projecttest2.network.MobileApi.getMobileSub
-import com.example.projecttest2.network.TokenApi.getJmartToken
-import com.example.projecttest2.network.TokenApi.getToken
-import com.example.projecttest2.network.TokenApi.getToken2
+import com.example.projecttest2.network.token.TokenApi.getJmartToken
+import com.example.projecttest2.network.token.TokenApi.getToken
 
 
 class MainFragment : Fragment() {
@@ -32,9 +24,6 @@ class MainFragment : Fragment() {
 
         val application = requireNotNull(this.activity).application
         val dataSource = MapDataBase.getDataBase(application).daoMap()
-//        val mainViewModel = MainViewModel(dataSource, application , context!!  )
-
-//        binding.mainViewModel = mainViewModel
 
         binding.iphoneButton.setOnClickListener { view: View ->
 //            getToken2(requireContext())

@@ -1,8 +1,6 @@
 package com.example.projecttest2.promotion
 
 import android.app.Application
-import android.content.Context
-import android.text.TextUtils.indexOf
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -10,15 +8,12 @@ import androidx.lifecycle.viewModelScope
 import com.example.projecttest2.database.DaoMap
 import com.example.projecttest2.database.MapDataBase
 import com.example.projecttest2.database.PromotionData
-import com.example.projecttest2.network.PromotionApi
-import com.example.projecttest2.network.PromotionInfo
-import com.example.projecttest2.network.gson
+import com.example.projecttest2.network.getApi.PromotionApi
+import com.example.projecttest2.repository.PromotionRepository
+import com.example.projecttest2.vo.PromotionInfo
 import com.google.gson.Gson
 import com.google.gson.JsonObject
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.io.StringReader
 
 
 class PromotionViewModel(

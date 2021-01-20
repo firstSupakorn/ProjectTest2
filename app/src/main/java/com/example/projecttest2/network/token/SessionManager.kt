@@ -1,4 +1,4 @@
-package com.example.projecttest2.network
+package com.example.projecttest2.network.token
 
 import android.content.Context
 import android.content.SharedPreferences

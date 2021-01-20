@@ -1,8 +1,9 @@
-package com.example.projecttest2.network
+package com.example.projecttest2.network.token
 
 import android.content.Context
 import android.util.Log
-import com.google.gson.annotations.SerializedName
+import com.example.projecttest2.network.createApi.RetrofitBuilder
+import com.example.projecttest2.vo.UserInfo
 import retrofit2.Call
 import retrofit2.Callback
 
@@ -15,7 +16,7 @@ object TokenApi{
     fun getToken(context: Context){
         val sessionManager = SessionManager(context)
         val userInfo = UserInfo("admin@jaymart","Jaymart@2020")
-        PromotionsApi.retrofitService.getToken(userInfo).enqueue(
+        RetrofitBuilder.createJbotApi.getToken(userInfo).enqueue(
                 object : Callback<TokenInfo> {
                     override fun onFailure(call: Call<TokenInfo>, t: Throwable) {
                         Log.i("api", t.message.toString())
@@ -33,7 +34,7 @@ object TokenApi{
 
     fun getJmartToken(context: Context){
         val sessionManager = SessionManager(context)
-        JmartCreateApi.retrofitService.getJmartToken().enqueue(
+        RetrofitBuilder.JmartCreateApi.retrofitService.getJmartToken().enqueue(
                 object : Callback<String> {
                     override fun onFailure(call: Call<String>, t: Throwable) {
                         Log.i("api", t.message.toString())

@@ -23,12 +23,24 @@ class SubIphoneActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sub_iphone)
-        val dataSource = MapDataBase.getDataBase(applicationContext).daoMap()
+
+
+
         val iphoneDesc = getIntent().getStringExtra("IPHONEDESC").toString()
+
         car_name.text = iphoneDesc
 
+        var imageUrlList: List<String> = emptyList()
+
+        val dataSource = MapDataBase.getDataBase(applicationContext).daoMap()
         val jmartProductInfo = dataSource.getUniqueJmartProduct(iphoneDesc)
-        Log.i("jmartOnclick","${iphoneDesc} ${jmartProductInfo} ")
+        imageUrlList = jmartProductInfo.map {
+            it.rom.toString()+"GB"
+            }
+
+
+
+        Log.i("jmartOnclick","${iphoneDesc} ${imageUrlList} ")
 
 
         Picasso.get().load(getIntent().getStringExtra("IPHONEIMAGEURL")).into(image_car)
@@ -36,13 +48,9 @@ class SubIphoneActivity : AppCompatActivity() {
 //        .setImageResource()
 
         car_name.text = getIntent().getStringExtra("IPHONEDESC").toString()
-//        val jmartData = getIntent().getStringExtra("JMARTDATA")
-//        Log.i("jmartOnclick","${jmartData} ")
         sp = findViewById(R.id.spinner) as Spinner
-        val countries = arrayOf("tha","wtf","ggez")
-        val adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,jmartProductInfo)
+        val adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,imageUrlList)
         sp.adapter = adapter
-
 
         Log.i("onclick",getIntent().getStringExtra("IPHONEMODEL").toString())
 

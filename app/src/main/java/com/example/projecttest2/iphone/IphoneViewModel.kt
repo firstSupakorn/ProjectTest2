@@ -4,21 +4,18 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
 import com.example.projecttest2.database.*
-import com.example.projecttest2.network.*
-import com.example.projecttest2.network.JmartApi.getJmartData
-import com.example.projecttest2.network.MobileApi.getMobileSub
+import com.example.projecttest2.network.getApi.JmartApiService.getJmartData
+import com.example.projecttest2.network.getApi.MobileApi.getMobileSub
+import com.example.projecttest2.vo.MobileSub05
 import com.google.gson.Gson
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import kotlinx.coroutines.launch
-import java.lang.Exception
 
 class IphoneViewModel(val database: DaoMap,
     application: Application) : AndroidViewModel(application) {
-
     private val videosRepository = IphoneRepository(database)
 
     init {
@@ -28,21 +25,18 @@ class IphoneViewModel(val database: DaoMap,
     }
 
     fun getMobileLiveData(): LiveData<MobileSub05> {
-        Log.i("api", "get live data")
         return getMobileSub(getApplication())
     }
 
     fun getProductLiveData(modelDesc: String): LiveData<JsonArray> {
-        Log.i("api", "get live data")
         return getJmartData(getApplication(), modelDesc)
     }
 
 
     fun refreshJmart(modelDesc: String){
-        Log.i("jmart","--------------------------------------------------")
+        // EDIT Change to listener
         getProductLiveData(modelDesc).observeForever {
-
-//            var index = 1
+            var index = 1
 
             for (i in it)
             {

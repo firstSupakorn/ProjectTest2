@@ -1,4 +1,4 @@
-package com.example.projecttest2.promotion
+package com.example.projecttest2.repository
 
 import android.app.Application
 import android.content.Context

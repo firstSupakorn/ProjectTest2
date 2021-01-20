@@ -60,7 +60,10 @@ class PromotionFragment : Fragment() {
 
         val promotionViewModel = PromotionViewModel(dataSource, application)
 
+        //  Get list promotion url
         val listPromotionData = dataSource.getPromotions()
+
+        //  Set image on carouselview
         carouselView.setPageCount(listPromotionData.size)
         carouselView.setImageListener { position, imageView ->
             Picasso.get().load(listPromotionData[position].url).into(imageView)

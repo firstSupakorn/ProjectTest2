@@ -9,8 +9,6 @@ import androidx.room.*
  */
 @Dao
 interface DaoMap {
-    /*@Query("select * from maps")
-    fun getAllMap():Flowable<List<MapData>>*/
     @Query("select * from maps")
     fun getAllMap():List<MapData>
     @Query("select * from maps where id in (:id)")
@@ -21,7 +19,7 @@ interface DaoMap {
     fun updateMap(map: MapData)
 
 
-    //----------------------------------------------
+//----------------------------------------------
     @Query("select * from promotions")
     fun getPromotions(): List<PromotionData>
     @Query("select * from promotions")
@@ -30,9 +28,6 @@ interface DaoMap {
     fun getUniquePromotion(id: Int): PromotionData
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertPromotion(promotion: PromotionData)
-
-//    @Query("SELECT COUNT(id) FROM table WHERE is_checked = 1")
-//    fun getCount(): Int
 
 //----------------------------------------------
     @Query("select * from iphones")

@@ -17,7 +17,7 @@ class IphoneHolder(inflater: LayoutInflater, parent: ViewGroup) :
     private var mTitleView: TextView? = null
     private var mYearView: TextView? = null
     private var imageIphoneView: ImageView? = null
-
+    val TAG = javaClass.simpleName
 
     init {
         mTitleView = itemView.findViewById(R.id.list_title)
@@ -29,9 +29,7 @@ class IphoneHolder(inflater: LayoutInflater, parent: ViewGroup) :
     fun bind(iphone: IphoneData, action:OnIphoneItemClickListner) {
         mTitleView?.text = iphone.display
         mYearView?.text = iphone.imageUrl
-        Log.i("api","${iphone.imageUrl}")
-
-
+        Log.i(TAG,"${iphone.imageUrl}")
 
         Picasso.get().load(iphone.imageUrl).resize(50, 50)
                 .centerCrop()

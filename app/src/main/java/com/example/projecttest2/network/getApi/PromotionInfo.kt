@@ -1,25 +1,14 @@
-package com.example.projecttest2.network
+package com.example.projecttest2.network.getApi
 
 import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.room.Entity
-import com.example.projecttest2.database.MapDataBase
-import com.example.projecttest2.database.PromotionData
+import com.example.projecttest2.network.createApi.RetrofitBuilder
+import com.example.projecttest2.network.token.SessionManager
+import com.example.projecttest2.vo.PromotionInfo
 import retrofit2.Call
 import retrofit2.Callback
 
-
-@Entity(tableName = "promotion")
-data class PromotionInfo(
-        val image01 : String,
-        val image02 : String,
-        val image03 : String,
-        val image04 : String,
-        val image05 : String,
-        val image06 : String,
-        val image07 : String
-)
 class PromotionApi{
 
     fun getPromotion(context: Context):MutableLiveData<PromotionInfo> {
@@ -28,7 +17,7 @@ class PromotionApi{
 
         var data: MutableLiveData<PromotionInfo> = MutableLiveData()
 
-        PromotionsApi.retrofitService.getPromotion("Bearer ${token}").enqueue(
+        RetrofitBuilder.createJbotApi.getPromotion("Bearer ${token}").enqueue(
                 object : Callback<PromotionInfo> {
                     override fun onFailure(call: Call<PromotionInfo>, t: Throwable) {
                         Log.i("api", "Please Login")
