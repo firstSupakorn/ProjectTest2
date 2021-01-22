@@ -2,22 +2,17 @@ package com.example.projecttest2.database
 
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.*
+import com.example.projecttest2.database.entity.IphoneData
+import com.example.projecttest2.database.entity.JmartData
+import com.example.projecttest2.database.entity.PromotionData
 
 /**
  * Created by ThinkSoft on 30/12/2017.
  */
 @Dao
 interface DaoMap {
-    @Query("select * from maps")
-    fun getAllMap():List<MapData>
-    @Query("select * from maps where id in (:id)")
-    fun getMap(id: Int): MapData
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertMap(map: MapData)
-    @Update
-    fun updateMap(map: MapData)
-
 
 //----------------------------------------------
     @Query("select * from promotions")
@@ -37,7 +32,6 @@ interface DaoMap {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertIphone(iphone: IphoneData)
 
-
 //----------------------------------------------
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertJmartProduct(product: JmartData)
@@ -47,10 +41,7 @@ interface DaoMap {
     fun getUniqueJmartProduct(modelDesc: String): List<JmartData>
     @Query("select id from jmart where modelDesc in (:modelDesc) and rom in(:rom)")
     fun getId(modelDesc: String,rom: String): Int
-
     @Query("select * from jmart")
     fun getAllJmart(): List<JmartData>
-
-
 }
 

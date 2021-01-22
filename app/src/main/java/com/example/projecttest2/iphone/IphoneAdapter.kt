@@ -1,11 +1,9 @@
 package com.example.projecttest2.iphone
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.projecttest2.database.IphoneData
-import com.example.projecttest2.database.MapData
+import com.example.projecttest2.database.entity.IphoneData
 
 
 class IphoneAdapter(private val list: List<IphoneData>, var clickListner: OnIphoneItemClickListner)

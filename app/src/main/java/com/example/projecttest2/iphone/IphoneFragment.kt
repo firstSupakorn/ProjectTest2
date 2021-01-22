@@ -11,7 +11,7 @@ import androidx.databinding.DataBindingUtil
 
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.projecttest2.R
-import com.example.projecttest2.database.IphoneData
+import com.example.projecttest2.database.entity.IphoneData
 import com.example.projecttest2.database.MapDataBase
 import com.example.projecttest2.databinding.FragmentIphoneBinding
 

@@ -13,7 +13,6 @@ import retrofit2.Callback
 
 object MobileApi{
     fun getMobileSub(context: Context): MutableLiveData<MobileSub05> {
-
         val sessionManager = SessionManager(context)
         val token = sessionManager.fetchAuthToken("jbotToken")
 
@@ -25,7 +24,6 @@ object MobileApi{
                     override fun onFailure(call: Call<MobileSubInfo>, t: Throwable) {
                         Log.i("api", "Fail")
                     }
-
                     override fun onResponse(call: Call<MobileSubInfo>, response: retrofit2.Response<MobileSubInfo>) {
                         if (response.isSuccessful) {
                             val json = response.body()

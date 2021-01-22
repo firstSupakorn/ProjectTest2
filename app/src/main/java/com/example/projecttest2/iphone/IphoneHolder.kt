@@ -7,10 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projecttest2.R
-import com.example.projecttest2.database.IphoneData
-import com.example.projecttest2.database.MapData
+import com.example.projecttest2.database.entity.IphoneData
 import com.squareup.picasso.Picasso
-import com.synnapps.carouselview.CarouselView
 
 class IphoneHolder(inflater: LayoutInflater, parent: ViewGroup) :
     RecyclerView.ViewHolder(inflater.inflate(R.layout.iphone_item, parent, false)) {

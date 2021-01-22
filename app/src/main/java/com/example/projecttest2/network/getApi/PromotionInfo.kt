@@ -6,6 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.projecttest2.network.createApi.RetrofitBuilder
 import com.example.projecttest2.network.token.SessionManager
 import com.example.projecttest2.vo.PromotionInfo
+import kotlinx.coroutines.Deferred
 import retrofit2.Call
 import retrofit2.Callback
 
@@ -25,7 +26,6 @@ class PromotionApi{
 
                     override fun onResponse(call: Call<PromotionInfo>, response: retrofit2.Response<PromotionInfo>) {
                         if (response.isSuccessful) {
-                            val json = response.body()
                             data.postValue(response.body())
                         }
                         else {
@@ -36,4 +36,5 @@ class PromotionApi{
         )
         return data
     }
-}
+
+    }

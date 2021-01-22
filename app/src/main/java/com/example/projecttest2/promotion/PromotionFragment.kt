@@ -5,22 +5,15 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.viewpager.widget.ViewPager
-import com.custom.sliderimage.logic.SliderImage
 import com.example.projecttest2.R
 import com.example.projecttest2.database.MapDataBase
-import com.example.projecttest2.database.PromotionData
-import com.example.projecttest2.database.Url
+import com.example.projecttest2.database.entity.Url
 import com.example.projecttest2.databinding.FragmentPromotionBinding
-import com.example.projecttest2.iphone.IphoneAdapter
-import com.example.projecttest2.iphone.IphoneViewModel
 import com.squareup.picasso.Picasso
-import com.synnapps.carouselview.ImageListener
-import kotlinx.android.synthetic.main.fragment_promotion.*
+import java.lang.Exception
 
 
 var mylist = ArrayList<String>()
@@ -60,14 +53,27 @@ class PromotionFragment : Fragment() {
 
         val promotionViewModel = PromotionViewModel(dataSource, application)
 
+        Log.i("getDatabase",promotionViewModel.promotionListLiveData.toString())
+        Log.i("liveCycle","promotion fragment")
+
+        try{
+            promotionViewModel.promotionListLiveData.observeForever(){
+
+            }
+        }
+        catch (e:Exception){
+            Log.i("getDatabase","Error: ${e.toString()}")
+
+        }
+
         //  Get list promotion url
-        val listPromotionData = dataSource.getPromotions()
+//        val listPromotionData = dataSource.getPromotions()
 
         //  Set image on carouselview
-        carouselView.setPageCount(listPromotionData.size)
-        carouselView.setImageListener { position, imageView ->
-            Picasso.get().load(listPromotionData[position].url).into(imageView)
-        }
+//        carouselView.setPageCount(listPromotionData.size)
+//        carouselView.setImageListener { position, imageView ->
+//            Picasso.get().load(listPromotionData[position].url).into(imageView)
+//        }
 
         return binding.root
     }

@@ -6,6 +6,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.projecttest2.database.*
+import com.example.projecttest2.database.entity.IphoneData
+import com.example.projecttest2.database.entity.JmartData
 import com.example.projecttest2.network.getApi.JmartApiService.getJmartData
 import com.example.projecttest2.network.getApi.MobileApi.getMobileSub
 import com.example.projecttest2.vo.MobileSub05
@@ -25,6 +27,8 @@ class IphoneViewModel(val database: DaoMap,
     }
 
     fun getMobileLiveData(): LiveData<MobileSub05> {
+
+//        Log.i("api ","/************${getMobileSub(getApplication()).value.toString()}")
         return getMobileSub(getApplication())
     }
 
@@ -86,17 +90,19 @@ class IphoneViewModel(val database: DaoMap,
 
 
     fun insertIntoDatabase(id: Int,display: String?, imageUrl:String?, model:String?){
-        MapDataBase.getDataBase(getApplication()).daoMap().insertIphone(IphoneData(id,display,imageUrl,model))
+        MapDataBase.getDataBase(getApplication()).daoMap().insertIphone(IphoneData(id, display, imageUrl, model))
         Log.i("getDatabase", "id : $id  "+ MapDataBase.getDataBase(getApplication()).daoMap().getUniqueIphone(id).display!!+ MapDataBase.getDataBase(getApplication()).daoMap().getUniqueIphone(id).imageUrl!!+
         MapDataBase.getDataBase(getApplication()).daoMap().getUniqueIphone(id).model!!)
     }
 
     fun insertIntoJmartDatabase(id: Int?,modelDesc: String, rom: String, price : String){
         if (id == 0){
-            MapDataBase.getDataBase(getApplication()).daoMap().insertJmartProduct(JmartData(null,modelDesc=modelDesc,rom=rom,price=price))
+            DatabaseOjb(getApplication()).daoMap.insertJmartProduct(JmartData(null, modelDesc = modelDesc, rom = rom, price = price))
+//            MapDataBase.getDataBase(getApplication()).daoMap().insertJmartProduct(JmartData(null, modelDesc = modelDesc, rom = rom, price = price))
         }
         else{
-            MapDataBase.getDataBase(getApplication()).daoMap().insertJmartProduct(JmartData(id,modelDesc,rom,price))
+            DatabaseOjb(getApplication()).daoMap.insertJmartProduct(JmartData(id, modelDesc, rom, price))
+//            MapDataBase.getDataBase(getApplication()).daoMap().insertJmartProduct(JmartData(id, modelDesc, rom, price))
         }
     }
 
